@@ -29,9 +29,9 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	driverService := service.NewDriverService("hummingbird-mqtt-driver", commons.HummingbirdIot)
 	config.InitConfig(driverService)
-	tcpDriver := driver.NewMQTTProtocolDriver(ctx, driverService)
+	mqttDriver := driver.NewMQTTProtocolDriver(ctx, driverService)
 	go func() {
-		if err := driverService.Start(tcpDriver); err != nil {
+		if err := driverService.Start(mqttDriver); err != nil {
 			driverService.GetLogger().Error("driver service start error: %s", err)
 			return
 		}
