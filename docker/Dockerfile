@@ -17,9 +17,8 @@ EXPOSE 4000
 
 RUN mkdir /logs
 
-STOPSIGNAL SIGKILL
 
 # Start
-ENTRYPOINT [ "/app/driver-linux-amd64" ]
+CMD [ "/bin/sh", "-c", "/app/driver-linux-amd64" ]
 
 

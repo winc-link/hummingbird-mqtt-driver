@@ -15,36 +15,18 @@
 package main
 
 import (
-	"context"
 	"github.com/winc-link/hummingbird-mqtt-driver/config"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/driver"
 	"github.com/winc-link/hummingbird-sdk-go/commons"
 	"github.com/winc-link/hummingbird-sdk-go/service"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
 func main() {
-	ctx, cancel := context.WithCancel(context.Background())
 	driverService := service.NewDriverService("hummingbird-mqtt-driver", commons.HummingbirdIot)
 	config.InitConfig(driverService)
-	mqttDriver := driver.NewMQTTProtocolDriver(ctx, driverService)
-	go func() {
-		if err := driverService.Start(mqttDriver); err != nil {
-			driverService.GetLogger().Error("driver service start error: %s", err)
-			return
-		}
-	}()
-	waitForSignal(cancel)
-}
-
-func waitForSignal(cancel context.CancelFunc) os.Signal {
-	signalChan := make(chan os.Signal, 1)
-	defer close(signalChan)
-	signal.Notify(signalChan, os.Interrupt, syscall.SIGTERM)
-	s := <-signalChan
-	cancel()
-	signal.Stop(signalChan)
-	return s
+	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
+	if err := driverService.Start(mqttDriver); err != nil {
+		driverService.GetLogger().Error("driver service start error: %s", err)
+		return
+	}
 }

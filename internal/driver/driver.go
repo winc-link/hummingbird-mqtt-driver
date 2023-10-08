@@ -45,10 +45,12 @@ func (dr MQTTProtocolDriver) ProductNotify(ctx context.Context, t commons.Produc
 	panic("implement me")
 }
 
-// Stop 蜂鸟物联网平台通知
+// Stop 驱动退出通知。
 func (dr MQTTProtocolDriver) Stop(ctx context.Context) error {
-	//TODO implement me
-	panic("implement me")
+	for _, dev := range device.GetAllDevice() {
+		dr.sd.Offline(dev.GetDeviceId())
+	}
+	return nil
 }
 
 // HandlePropertySet 设备属性设置
@@ -70,10 +72,9 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 }
 
 // NewMQTTProtocolDriver MQTT协议驱动
-func NewMQTTProtocolDriver(ctx context.Context, sd *service.DriverService) *MQTTProtocolDriver {
+func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
 	loadDevices(sd)
 	go server.NewMQTTService(sd).Start()
-	go cancel(sd, ctx)
 	return &MQTTProtocolDriver{
 		sd: sd,
 	}
@@ -82,18 +83,6 @@ func NewMQTTProtocolDriver(ctx context.Context, sd *service.DriverService) *MQTT
 // loadDevices 获取所有已经创建成功的设备，保存在内存中。
 func loadDevices(sd *service.DriverService) {
 	for _, dev := range sd.GetDeviceList() {
-		device.NewDevice(dev.Id, dev.DeviceSn, dev.ProductId, dev.Status == commons.DeviceOnline)
-	}
-}
-
-// cancel 监听驱动退出，如果驱动退出则把此驱动关联的设备设置成离线
-func cancel(sd *service.DriverService, ctx context.Context) {
-	for {
-		select {
-		case <-ctx.Done():
-			for _, dev := range device.GetAllDevice() {
-				sd.Offline(dev.GetDeviceId())
-			}
-		}
+		device.PutDevice(dev.DeviceSn, device.NewDevice(dev.Id, dev.DeviceSn, dev.ProductId, dev.Status == commons.DeviceOnline))
 	}
 }
