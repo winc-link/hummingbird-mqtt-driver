@@ -1,6 +1,6 @@
 module github.com/winc-link/hummingbird-mqtt-driver
 
-go 1.16
+go 1.18
 
 require (
 	github.com/DrmagicE/gmqtt v0.5.0
