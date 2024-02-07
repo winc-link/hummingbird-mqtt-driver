@@ -16,9 +16,14 @@ package server
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"github.com/DrmagicE/gmqtt"
 	"github.com/DrmagicE/gmqtt/pkg/packets"
 	"github.com/DrmagicE/gmqtt/server"
+	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
+	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
+	"github.com/winc-link/hummingbird-mqtt-driver/internal/pkg/tool"
 	"net"
 )
 
@@ -34,6 +39,38 @@ func OnStop(ctx context.Context) {}
 // OnSubscribe 收到订阅请求时调用
 // 校验订阅是否合法
 func OnSubscribe(ctx context.Context, client server.Client, req *server.SubscribeRequest) error {
+	if client.ClientOptions().ClientID == constants.MQTTInnerClientId {
+		return nil
+	}
+	for _, topic := range req.Subscribe.Topics {
+		t := dtos.Topic(string(topic.Name))
+		deviceId := t.GetThingModelTopicDeviceId()
+		productId := t.GetThingModelTopicProductId()
+		if deviceId == "" || productId == "" {
+			return errors.New("subscribe Unauthorized")
+		}
+		dev, ok := GlobalDriverService.GetDeviceById(deviceId)
+		if !ok {
+			return errors.New("subscribe Unauthorized")
+		}
+		product, ok := GlobalDriverService.GetProductById(productId)
+		if !ok {
+			return errors.New("subscribe Unauthorized")
+		}
+
+		if dev.ProductId != product.Id {
+			return errors.New("subscribe Unauthorized")
+		}
+		if topic.Name == fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId) ||
+			topic.Name == fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId) ||
+			topic.Name == fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, productId) ||
+			topic.Name == fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, productId) ||
+			topic.Name == fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, productId) {
+			return nil
+		}
+		return errors.New("subscribe Unauthorized")
+	}
+
 	return nil
 }
 
@@ -54,19 +91,78 @@ func OnUnsubscribed(ctx context.Context, client server.Client, topicName string)
 // OnMsgArrived 收到消息发布报文时调用
 // 校验发布权限，改写发布消息
 func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArrivedRequest) error {
-	return nil
+	if client.ClientOptions().ClientID == constants.MQTTInnerClientId {
+		return nil
+	}
+	topic := dtos.Topic(string(req.Publish.TopicName))
+	deviceId := topic.GetThingModelTopicDeviceId()
+	productId := topic.GetThingModelTopicProductId()
+	device, ok := GlobalDriverService.GetDeviceById(deviceId)
+	if !ok {
+		return fmt.Errorf("unauthorized")
+	}
+	product, ok := GlobalDriverService.GetProductById(productId)
+	if !ok {
+		return fmt.Errorf("unauthorized")
+	}
+	if device.ProductId != product.Id {
+		return errors.New("unauthorized")
+	}
+	if string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/post", deviceId, productId) ||
+		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/event/post", deviceId, productId) ||
+		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/query_reply", deviceId, productId) ||
+		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/set_reply", deviceId, productId) ||
+		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/service/invoke_reply", deviceId, productId) {
+		return nil
+	}
+	//java script
+	//https://github.com/robertkrimen/otto
+	//php
+	//https://github.com/deuill/go-php
+	//go
+	// ？？？
+	return errors.New("unauthorized")
 }
 
 // OnBasicAuth 收到连接请求报文时调用
 // 客户端连接鉴权
 func OnBasicAuth(ctx context.Context, client server.Client, req *server.ConnectRequest) (err error) {
+	clientId := string(req.Connect.ClientID)
+	username := string(req.Connect.Username)
+	password := string(req.Connect.Password)
+	if clientId == "" || username == "" || password == "" {
+		return fmt.Errorf("unauthorized")
+	}
+	if clientId == constants.MQTTInnerClientId && username == constants.MQTTInnerUsername && password == constants.MQTTInnerPassword {
+		return nil
+	}
+	dev, ok := GlobalDriverService.GetDeviceById(clientId)
+	if !ok {
+		return fmt.Errorf("unauthorized")
+	}
+	product, ok := GlobalDriverService.GetProductById(dev.ProductId)
+	if !ok {
+		return fmt.Errorf("unauthorized")
+	}
+	if username != (dev.Id + "&" + product.Key) {
+		return fmt.Errorf("unauthorized")
+	}
+	if password != tool.HmacMd5(dev.Secret, dev.Id+"&"+product.Key) {
+		return fmt.Errorf("unauthorized")
+	}
+	err = GlobalDriverService.Online(clientId)
+	if err != nil {
+		GlobalDriverService.GetLogger().Errorf("device online err:%s", err.Error())
+		return err
+	}
+
 	return nil
 }
 
 // OnEnhancedAuth 收到带有AuthMetho的连接请求报文时调用（V5特性）
 // 客户端连接鉴权
 func OnEnhancedAuth(ctx context.Context, client server.Client, req *server.ConnectRequest) (resp *server.EnhancedAuthResponse, err error) {
-	return nil, nil
+	return
 }
 
 // OnReAuth 收到Auth报文时调用（V5特性）
@@ -96,7 +192,16 @@ func OnSessionTerminated(ctx context.Context, clientID string, reason server.Ses
 func OnDelivered(ctx context.Context, client server.Client, msg *gmqtt.Message) {}
 
 // OnClosed 统计在线客户端数量
-func OnClosed(ctx context.Context, client server.Client, err error) {}
+func OnClosed(ctx context.Context, client server.Client, err error) {
+	clientId := client.ClientOptions().ClientID
+	if clientId != constants.MQTTInnerClientId {
+		err = GlobalDriverService.Offline(clientId)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device offline err:%s", err.Error())
+		}
+	}
+
+}
 
 // OnMsgDropped 消息被丢弃时调用
 func OnMsgDropped(ctx context.Context, clientID string, msg *gmqtt.Message, err error) {}

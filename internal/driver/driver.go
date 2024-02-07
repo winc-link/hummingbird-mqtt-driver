@@ -16,73 +16,151 @@ package driver
 
 import (
 	"context"
-	"github.com/winc-link/hummingbird-mqtt-driver/internal/device"
+	"fmt"
+	mqtt "github.com/eclipse/paho.mqtt.golang"
+	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
+	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
+	"github.com/winc-link/hummingbird-mqtt-driver/internal/client"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/server"
 	"github.com/winc-link/hummingbird-sdk-go/commons"
 	"github.com/winc-link/hummingbird-sdk-go/model"
 	"github.com/winc-link/hummingbird-sdk-go/service"
+	"time"
 )
 
 type MQTTProtocolDriver struct {
-	sd *service.DriverService
+	sd         *service.DriverService
+	mqttClient mqtt.Client
 }
 
 // CloudPluginNotify 云插件启动/停止通知
 func (dr MQTTProtocolDriver) CloudPluginNotify(ctx context.Context, t commons.CloudPluginNotifyType, name string) error {
-	//TODO implement me
-	panic("implement me")
+	return nil
 }
 
 // DeviceNotify 设备添加/修改/删除通知
 func (dr MQTTProtocolDriver) DeviceNotify(ctx context.Context, t commons.DeviceNotifyType, deviceId string, device model.Device) error {
-	//TODO implement me
-	panic("implement me")
+	return nil
 }
 
 // ProductNotify 产品添加/修改/删除通知
 func (dr MQTTProtocolDriver) ProductNotify(ctx context.Context, t commons.ProductNotifyType, productId string, product model.Product) error {
-	//TODO implement me
-	panic("implement me")
+	return nil
 }
 
 // Stop 驱动退出通知。
 func (dr MQTTProtocolDriver) Stop(ctx context.Context) error {
-	for _, dev := range device.GetAllDevice() {
-		dr.sd.Offline(dev.GetDeviceId())
+	for _, d := range dr.sd.GetDeviceList() {
+		dr.sd.Offline(d.Id)
 	}
 	return nil
 }
 
 // HandlePropertySet 设备属性设置
 func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId string, data model.PropertySet) error {
-
+	device, ok := dr.sd.GetDeviceById(deviceId)
+	if ok != true {
+		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+			MsgId: data.MsgId,
+			Data: model.PropertySetResponseData{
+				Success:      false,
+				Code:         uint32(constants.DeviceNotFound),
+				ErrorMessage: string(constants.ErrorCodeMsgMap[constants.DeviceNotFound]),
+			},
+		})
+	}
+	product, ok := dr.sd.GetProductById(device.ProductId)
+	if ok != true {
+		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+			MsgId: data.MsgId,
+			Data: model.PropertySetResponseData{
+				Success:      false,
+				Code:         uint32(constants.ProductNotFound),
+				ErrorMessage: string(constants.ErrorCodeMsgMap[constants.ProductNotFound]),
+			},
+		})
+	}
+	var propertySet dtos.PropertySet
+	propertySet.Id = data.MsgId
+	propertySet.Version = data.Version
+	propertySet.Params = data.Data
+	topic := fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, product.Id)
+	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil
 }
 
 // HandlePropertyGet 设备属性查询
 func (dr MQTTProtocolDriver) HandlePropertyGet(ctx context.Context, deviceId string, data model.PropertyGet) error {
-	//TODO implement me
-	panic("implement me")
+	device, ok := dr.sd.GetDeviceById(deviceId)
+	if ok != true {
+		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+			MsgId: data.MsgId,
+			Data: model.PropertySetResponseData{
+				Success:      false,
+				Code:         uint32(constants.DeviceNotFound),
+				ErrorMessage: string(constants.ErrorCodeMsgMap[constants.DeviceNotFound]),
+			},
+		})
+	}
+	product, ok := dr.sd.GetProductById(device.ProductId)
+	if ok != true {
+		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+			MsgId: data.MsgId,
+			Data: model.PropertySetResponseData{
+				Success:      false,
+				Code:         uint32(constants.ProductNotFound),
+				ErrorMessage: string(constants.ErrorCodeMsgMap[constants.ProductNotFound]),
+			},
+		})
+	}
+	var propertySet dtos.PropertyQuery
+	propertySet.Id = data.MsgId
+	propertySet.Version = data.Version
+	propertySet.Params = data.Data
+	topic := fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, product.Id)
+	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
+	return nil
 }
 
 // HandleServiceExecute 设备服务调用
 func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId string, data model.ServiceExecuteRequest) error {
-	//TODO implement me
-	panic("implement me")
+	device, ok := dr.sd.GetDeviceById(deviceId)
+	if ok != true {
+		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+			MsgId: data.MsgId,
+			Data: model.PropertySetResponseData{
+				Success:      false,
+				Code:         uint32(constants.DeviceNotFound),
+				ErrorMessage: string(constants.ErrorCodeMsgMap[constants.DeviceNotFound]),
+			},
+		})
+	}
+	product, ok := dr.sd.GetProductById(device.ProductId)
+	if ok != true {
+		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+			MsgId: data.MsgId,
+			Data: model.PropertySetResponseData{
+				Success:      false,
+				Code:         uint32(constants.ProductNotFound),
+				ErrorMessage: string(constants.ErrorCodeMsgMap[constants.ProductNotFound]),
+			},
+		})
+	}
+	var propertySet dtos.ServiceInvoke
+	propertySet.Id = data.MsgId
+	propertySet.Version = data.Version
+	propertySet.Params = data.Data
+	topic := fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, product.Id)
+	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
+	return nil
 }
 
 // NewMQTTProtocolDriver MQTT协议驱动
 func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
-	loadDevices(sd)
 	go server.NewMQTTService(sd).Start()
+	time.Sleep(2 * time.Second)
 	return &MQTTProtocolDriver{
-		sd: sd,
-	}
-}
-
-// loadDevices 获取所有已经创建成功的设备，保存在内存中。
-func loadDevices(sd *service.DriverService) {
-	for _, dev := range sd.GetDeviceList() {
-		device.PutDevice(dev.DeviceSn, device.NewDevice(dev.Id, dev.DeviceSn, dev.ProductId, dev.Status == commons.DeviceOnline))
+		sd:         sd,
+		mqttClient: client.NewMQTTClient(sd),
 	}
 }

@@ -12,22 +12,31 @@
  * the License.
  *******************************************************************************/
 
-package server
+package dtos
 
-import (
-	"github.com/DrmagicE/gmqtt/config"
-)
+import "encoding/json"
 
-var DefaultListeners = []*config.ListenerConfig{
-	{
-		Address:    "0.0.0.0:1883",
-		TLSOptions: nil,
-		Websocket:  nil,
-	},
-	//{
-	//	Address: "0.0.0.0:8883",
-	//	Websocket: &config.WebsocketOptions{
-	//		Path: "/",
-	//	},
-	//},
+type CommonResponse struct {
+	Id           string `json:"id"`
+	Code         int    `json:"code"`
+	Success      bool   `json:"success"`
+	ErrorMessage string `json:"errorMessage"`
+	Version      string `json:"version"`
+}
+
+func (t *CommonResponse) Marshal() []byte {
+	b, _ := json.Marshal(t)
+	return b
+}
+
+type IntOrFloatSpecs struct {
+	Min      string `json:"min"`
+	Max      string `json:"max"`
+	Step     string `json:"step"`
+	Unit     string `json:"unit"`
+	UnitName string `json:"unitName"`
+}
+
+type TextSpecs struct {
+	Length string `json:"length"`
 }

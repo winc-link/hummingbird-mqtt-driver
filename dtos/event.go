@@ -12,38 +12,13 @@
  * the License.
  *******************************************************************************/
 
-package device
+package dtos
 
-type Dev interface {
-	GetDeviceId() string
-	GetDeviceSn() string
-	IsOnline() bool
-}
+import "github.com/winc-link/hummingbird-sdk-go/model"
 
-type Device struct {
-	ProductId string
-	DeviceId  string
-	DeviceSn  string
-	isOnline  bool
-}
-
-func (d *Device) GetDeviceId() string {
-	return d.DeviceId
-}
-
-func (d *Device) GetDeviceSn() string {
-	return d.DeviceSn
-}
-
-func (d *Device) IsOnline() bool {
-	return d.isOnline
-}
-
-func NewDevice(deviceId, deviceSn, ProductId string, isOnline bool) Dev {
-	return &Device{
-		DeviceId:  deviceId,
-		DeviceSn:  deviceSn,
-		ProductId: ProductId,
-		isOnline:  isOnline,
-	}
+type EventPost struct {
+	Id      string          `json:"id"`
+	Version string          `json:"version"`
+	Sys     Sys             `json:"sys"`
+	Params  model.EventData `json:"params"`
 }

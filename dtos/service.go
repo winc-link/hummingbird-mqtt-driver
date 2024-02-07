@@ -12,22 +12,28 @@
  * the License.
  *******************************************************************************/
 
-package server
+package dtos
 
 import (
-	"github.com/DrmagicE/gmqtt/config"
+	"encoding/json"
+	"github.com/winc-link/hummingbird-sdk-go/model"
 )
 
-var DefaultListeners = []*config.ListenerConfig{
-	{
-		Address:    "0.0.0.0:1883",
-		TLSOptions: nil,
-		Websocket:  nil,
-	},
-	//{
-	//	Address: "0.0.0.0:8883",
-	//	Websocket: &config.WebsocketOptions{
-	//		Path: "/",
-	//	},
-	//},
+// ServiceInvoke 服务调用
+type ServiceInvoke struct {
+	Id      string              `json:"id"`
+	Version string              `json:"version"`
+	Sys     Sys                 `json:"sys"`
+	Params  model.ServiceDataIn `json:"params"`
+}
+
+func (s *ServiceInvoke) Marshal() []byte {
+	b, _ := json.Marshal(s)
+	return b
+}
+
+// ServiceInvokeReply 服务调用响应
+type ServiceInvokeReply struct {
+	Id     string               `json:"id"`
+	Params model.ServiceDataOut `json:"params"`
 }

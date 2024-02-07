@@ -22,7 +22,7 @@ import (
 )
 
 func main() {
-	driverService := service.NewDriverService("hummingbird-mqtt-driver", commons.HummingbirdIot)
+	driverService := service.NewDriverService("hummingbird-official-mqtt-driver", commons.AliIot)
 	config.InitConfig(driverService)
 	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
 	if err := driverService.Start(mqttDriver); err != nil {

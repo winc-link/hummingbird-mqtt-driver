@@ -12,22 +12,16 @@
  * the License.
  *******************************************************************************/
 
-package server
+package tool
 
 import (
-	"github.com/DrmagicE/gmqtt/config"
+	"crypto/hmac"
+	"crypto/md5"
+	"encoding/hex"
 )
 
-var DefaultListeners = []*config.ListenerConfig{
-	{
-		Address:    "0.0.0.0:1883",
-		TLSOptions: nil,
-		Websocket:  nil,
-	},
-	//{
-	//	Address: "0.0.0.0:8883",
-	//	Websocket: &config.WebsocketOptions{
-	//		Path: "/",
-	//	},
-	//},
+func HmacMd5(key, data string) string {
+	h := hmac.New(md5.New, []byte(key))
+	h.Write([]byte(data))
+	return hex.EncodeToString(h.Sum([]byte("")))
 }

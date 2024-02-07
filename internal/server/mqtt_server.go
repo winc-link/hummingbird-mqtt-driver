@@ -44,7 +44,6 @@ func NewMQTTService(sd *service.DriverService) *MQTTServer {
 func (m *MQTTServer) Start() {
 	c := config.DefaultConfig()
 	c.Listeners = DefaultListeners
-
 	if c.PidFile != "" {
 		pid, err := pidfile.New(c.PidFile)
 		if err != nil {

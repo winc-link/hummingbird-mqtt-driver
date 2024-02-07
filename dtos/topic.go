@@ -12,22 +12,24 @@
  * the License.
  *******************************************************************************/
 
-package server
+package dtos
 
-import (
-	"github.com/DrmagicE/gmqtt/config"
-)
+import "strings"
 
-var DefaultListeners = []*config.ListenerConfig{
-	{
-		Address:    "0.0.0.0:1883",
-		TLSOptions: nil,
-		Websocket:  nil,
-	},
-	//{
-	//	Address: "0.0.0.0:8883",
-	//	Websocket: &config.WebsocketOptions{
-	//		Path: "/",
-	//	},
-	//},
+type Topic string
+
+func (a Topic) GetThingModelTopicDeviceId() string {
+	ss := strings.Split(string(a), "/")
+	if len(ss) >= 3 {
+		return ss[2]
+	}
+	return ""
+}
+
+func (a Topic) GetThingModelTopicProductId() string {
+	ss := strings.Split(string(a), "/")
+	if len(ss) >= 3 {
+		return ss[3]
+	}
+	return ""
 }
