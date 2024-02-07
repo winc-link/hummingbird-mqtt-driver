@@ -988,10 +988,10 @@ github.com/stretchr/testify v1.8.3 h1:RP3t2pwF7cMEbC1dqtB6poj3niw/9gnV4Cjg5oW5gt
 github.com/stretchr/testify v1.8.3/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/ugorji/go v1.1.4/go.mod h1:uQMGLiO92mf5W77hV/PUCpI3pbzQx3CRekS0kk+RGrc=
-github.com/winc-link/edge-driver-proto v0.0.0-20231023113502-daf15ee41883 h1:Zy0N0GuoJ63Vj9E916VpqJzaDQ//Uo5xcVrHThbp8so=
-github.com/winc-link/edge-driver-proto v0.0.0-20231023113502-daf15ee41883/go.mod h1:H6w+UUMgmrTB+A/vJLm+kwtLb1dcA02IV9wj1UtO3Ws=
-github.com/winc-link/hummingbird-sdk-go v0.0.0-20231023114328-0ad89ef864bf h1:GtzfqKzUsUBZRSQyQtoLHk19o2qcrxj2PfhDc93EyVE=
-github.com/winc-link/hummingbird-sdk-go v0.0.0-20231023114328-0ad89ef864bf/go.mod h1:eY9qA9Tr4ZcQF6kqdqlQlAoDO7ldFJ4myt4U5HGsTK4=
+github.com/winc-link/edge-driver-proto v0.0.0-20231026095244-f5aaece7aee1 h1:2fEBu0UkyHP/AXINtsw1g+mcLixGcIOob2MP+OSFP9c=
+github.com/winc-link/edge-driver-proto v0.0.0-20231026095244-f5aaece7aee1/go.mod h1:H6w+UUMgmrTB+A/vJLm+kwtLb1dcA02IV9wj1UtO3Ws=
+github.com/winc-link/hummingbird-sdk-go v0.0.0-20231029081056-0fbd6a6e006c h1:5mM/xI4YkmE6tfEbZLvdZ+WI4r7BfRENlfJZkhdAhK4=
+github.com/winc-link/hummingbird-sdk-go v0.0.0-20231029081056-0fbd6a6e006c/go.mod h1:z5TKFbn6aJtRv22dGL+2O+11ISrZwhs+oVVgSvPHEVA=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
 github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77/go.mod h1:aYKd//L2LvnjZzWKhF00oedf4jCCReLcmhLdhm1A27Q=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
