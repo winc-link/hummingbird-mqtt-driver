@@ -61,15 +61,24 @@ func OnSubscribe(ctx context.Context, client server.Client, req *server.Subscrib
 		if dev.ProductId != product.Id {
 			return errors.New("subscribe Unauthorized")
 		}
-		if topic.Name == fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId) ||
-			topic.Name == fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId) ||
-			topic.Name == fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, productId) ||
-			topic.Name == fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, productId) ||
-			topic.Name == fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, productId) {
-			return nil
-		}
-		return errors.New("subscribe Unauthorized")
 	}
+	// 如果用户想检查订阅消息时topic是否合法，请用户自行完成下面相关内容
+	//	if topic.Name == fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDeviceOnlineReply, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDeviceOfflineReply, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDevicePropertyQuery, deviceId, productId) ||
+	//		topic.Name == fmt.Sprintf(constants.TopicSubDeviceServiceInvoke, deviceId, productId) {
+	//		continue
+	//	}
+	//	return errors.New("subscribe Unauthorized")
+	//}
 
 	return nil
 }
@@ -106,22 +115,30 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		return fmt.Errorf("unauthorized")
 	}
 	if device.ProductId != product.Id {
-		return errors.New("unauthorized")
+		return fmt.Errorf("unauthorized")
 	}
-	if string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/post", deviceId, productId) ||
-		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/event/post", deviceId, productId) ||
-		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/query_reply", deviceId, productId) ||
-		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/set_reply", deviceId, productId) ||
-		string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/service/invoke_reply", deviceId, productId) {
-		return nil
-	}
+	// 如果用户想检查收到消息时topic是否合法，请用户自行完成下面相关内容
+	//if string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/post", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/event/post", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/query_reply", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/set_reply", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/service/invoke_reply", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/online", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/offline", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/property/post", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/event/post", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/property/set_reply", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/property/query_reply", deviceId, productId) ||
+	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/service/invoke_reply", deviceId, productId) {
+	//	return nil
+	//}
+	// todo 消息改写。可以在物联网页面使用javascript或者php书写一段消息解析代码，然后把这段代码下发到驱动中，驱动根据这段代码动态解析设备上报数据，可以使用如下仓库来实现此功能。
 	//java script
 	//https://github.com/robertkrimen/otto
 	//php
 	//https://github.com/deuill/go-php
-	//go
-	// ？？？
-	return errors.New("unauthorized")
+	//go ?
+	return nil
 }
 
 // OnBasicAuth 收到连接请求报文时调用
@@ -159,7 +176,7 @@ func OnBasicAuth(ctx context.Context, client server.Client, req *server.ConnectR
 	return nil
 }
 
-// OnEnhancedAuth 收到带有AuthMetho的连接请求报文时调用（V5特性）
+// OnEnhancedAuth 收到带有AuthMeth的连接请求报文时调用（V5特性）
 // 客户端连接鉴权
 func OnEnhancedAuth(ctx context.Context, client server.Client, req *server.ConnectRequest) (resp *server.EnhancedAuthResponse, err error) {
 	return

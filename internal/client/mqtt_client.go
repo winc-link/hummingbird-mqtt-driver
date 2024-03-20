@@ -49,6 +49,14 @@ func NewMQTTClient(sd *service.DriverService) mqtt.Client {
 	client.Subscribe(constants.TopicDevicePropertySetReply, 1, propertySetReplyCallback)
 	client.Subscribe(constants.TopicDevicePropertyQueryReply, 1, propertyQueryReplyCallback)
 	client.Subscribe(constants.TopicDeviceServiceInvokeReply, 1, serviceInvokeReplyCallback)
+	client.Subscribe(constants.TopicSubDeviceOnline, 1, subDeviceOnlineCallback)
+	client.Subscribe(constants.TopicSubDeviceOffline, 1, subDeviceOfflineCallback)
+	client.Subscribe(constants.TopicSubDevicePropertyReport, 1, sudDevicePropertyPostCallback)
+	client.Subscribe(constants.TopicSubDeviceEventReport, 1, sudDeviceEventPostCallback)
+	client.Subscribe(constants.TopicSubDevicePropertySetReply, 1, propertySetReplyCallback)
+	client.Subscribe(constants.TopicSubDevicePropertyQueryReply, 1, propertyQueryReplyCallback)
+	client.Subscribe(constants.TopicSubDeviceServiceInvokeReply, 1, serviceInvokeReplyCallback)
+
 	return client
 }
 
@@ -78,7 +86,7 @@ func serviceInvokeReplyCallback(client mqtt.Client, message mqtt.Message) {
 	}
 }
 
-// propertyQueryCallback
+// propertyQueryCallback 属性查询响应
 func propertyQueryReplyCallback(client mqtt.Client, message mqtt.Message) {
 	topic := dtos.Topic(message.Topic())
 	deviceId := topic.GetThingModelTopicDeviceId()
@@ -368,4 +376,276 @@ func verifyParam(property model.Property, param model.PropertyData) (constants.E
 	}
 	return constants.DefaultSuccessCode,
 		constants.ErrorCodeMsgMap[constants.DefaultSuccessCode]
+}
+
+// subDeviceOnlineCallback 子设备在线
+func subDeviceOnlineCallback(client mqtt.Client, message mqtt.Message) {
+	topic := dtos.Topic(message.Topic())
+	driverService.GetLogger().Info("topic:", topic)
+	deviceId := topic.GetThingModelTopicDeviceId()
+	productId := topic.GetThingModelTopicProductId()
+
+	var subDeviceOnline dtos.SubDeviceOnline
+	var subDeviceOnlineReply dtos.CommonResponse
+	err := json.Unmarshal(message.Payload(), &subDeviceOnline)
+	if err != nil {
+		subDeviceOnlineReply.Code = int(constants.FormatErrorCode)
+		subDeviceOnlineReply.Success = false
+		subDeviceOnlineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.FormatErrorCode])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOnlineReply, deviceId, productId), 1, false, subDeviceOnlineReply.Marshal())
+		return
+	}
+
+	// 检查设备是否存在
+	if _, ok := driverService.GetDeviceById(deviceId); !ok {
+		subDeviceOnlineReply.Id = subDeviceOnline.Id
+		subDeviceOnlineReply.Code = int(constants.DeviceNotFound)
+		subDeviceOnlineReply.Success = false
+		subDeviceOnlineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.DeviceNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOnlineReply, deviceId, productId), 1, false, subDeviceOnlineReply.Marshal())
+		return
+	}
+
+	// 检查产品是否存在
+	if _, ok := driverService.GetProductById(productId); !ok {
+		subDeviceOnlineReply.Id = subDeviceOnline.Id
+		subDeviceOnlineReply.Code = int(constants.ProductNotFound)
+		subDeviceOnlineReply.Success = false
+		subDeviceOnlineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.ProductNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOnlineReply, deviceId, productId), 1, false, subDeviceOnlineReply.Marshal())
+		return
+	}
+
+	if err = driverService.Online(deviceId); err != nil {
+		if subDeviceOnline.Sys.Ack {
+			subDeviceOnlineReply.Id = subDeviceOnline.Id
+			subDeviceOnlineReply.Code = int(constants.SystemErrorCode)
+			subDeviceOnlineReply.Success = false
+			subDeviceOnlineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.SystemErrorCode]) + " :" + err.Error()
+			client.Publish(fmt.Sprintf(constants.TopicSubDeviceOnlineReply, deviceId, productId), 1, false, subDeviceOnlineReply.Marshal())
+		}
+		return
+	}
+	if subDeviceOnline.Sys.Ack {
+		subDeviceOnlineReply.Id = subDeviceOnline.Id
+		subDeviceOnlineReply.Code = int(constants.DefaultSuccessCode)
+		subDeviceOnlineReply.Success = true
+		subDeviceOnlineReply.ErrorMessage = ""
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOnlineReply, deviceId, productId), 1, false, subDeviceOnlineReply.Marshal())
+	}
+	return
+}
+
+// subDeviceOfflineCallback 子设备离线
+func subDeviceOfflineCallback(client mqtt.Client, message mqtt.Message) {
+	topic := dtos.Topic(message.Topic())
+	deviceId := topic.GetThingModelTopicDeviceId()
+	productId := topic.GetThingModelTopicProductId()
+	var subDeviceOfflineReply dtos.CommonResponse
+	var subDeviceOffline dtos.SubDeviceOffline
+	err := json.Unmarshal(message.Payload(), &subDeviceOffline)
+	if err != nil {
+		subDeviceOfflineReply.Code = int(constants.FormatErrorCode)
+		subDeviceOfflineReply.Success = false
+		subDeviceOfflineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.FormatErrorCode])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOfflineReply, deviceId, productId), 1, false, subDeviceOfflineReply.Marshal())
+		return
+	}
+	// 检查设备是否存在
+	if _, ok := driverService.GetDeviceById(deviceId); !ok {
+		subDeviceOfflineReply.Id = subDeviceOffline.Id
+		subDeviceOfflineReply.Code = int(constants.DeviceNotFound)
+		subDeviceOfflineReply.Success = false
+		subDeviceOfflineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.DeviceNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOfflineReply, deviceId, productId), 1, false, subDeviceOfflineReply.Marshal())
+		return
+	}
+	// 检查产品是否存在
+	if _, ok := driverService.GetProductById(productId); !ok {
+		subDeviceOfflineReply.Id = subDeviceOffline.Id
+		subDeviceOfflineReply.Code = int(constants.ProductNotFound)
+		subDeviceOfflineReply.Success = false
+		subDeviceOfflineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.ProductNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOfflineReply, deviceId, productId), 1, false, subDeviceOfflineReply.Marshal())
+		return
+	}
+
+	if err = driverService.Offline(deviceId); err != nil {
+		if subDeviceOffline.Sys.Ack {
+			subDeviceOfflineReply.Id = subDeviceOffline.Id
+			subDeviceOfflineReply.Code = int(constants.SystemErrorCode)
+			subDeviceOfflineReply.Success = false
+			subDeviceOfflineReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.SystemErrorCode]) + " :" + err.Error()
+			client.Publish(fmt.Sprintf(constants.TopicSubDeviceOfflineReply, deviceId, productId), 1, false, subDeviceOfflineReply.Marshal())
+		}
+		return
+	}
+	if subDeviceOffline.Sys.Ack {
+		subDeviceOfflineReply.Id = subDeviceOffline.Id
+		subDeviceOfflineReply.Code = int(constants.DefaultSuccessCode)
+		subDeviceOfflineReply.Success = true
+		subDeviceOfflineReply.ErrorMessage = ""
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceOfflineReply, deviceId, productId), 1, false, subDeviceOfflineReply.Marshal())
+	}
+	return
+}
+
+// sudDevicePropertyPostCallback 设备属性上报
+func sudDevicePropertyPostCallback(client mqtt.Client, message mqtt.Message) {
+	topic := dtos.Topic(message.Topic())
+	deviceId := topic.GetThingModelTopicDeviceId()
+	productId := topic.GetThingModelTopicProductId()
+	var propertyPost dtos.PropertyPost
+	err := json.Unmarshal(message.Payload(), &propertyPost)
+	var propertyPostReply dtos.CommonResponse
+	propertyPostReply.Id = propertyPost.Id
+	propertyPostReply.Version = propertyPost.Version
+
+	if err != nil {
+		propertyPostReply.Code = int(constants.FormatErrorCode)
+		propertyPostReply.Success = false
+		propertyPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.FormatErrorCode])
+		client.Publish(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId), 1, false, propertyPostReply.Marshal())
+		return
+	}
+
+	// 检查设备是否存在
+	if _, ok := driverService.GetDeviceById(deviceId); !ok {
+		propertyPostReply.Code = int(constants.DeviceNotFound)
+		propertyPostReply.Success = false
+		propertyPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.DeviceNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId), 1, false, propertyPostReply.Marshal())
+		return
+	}
+
+	// 检查产品是否存在
+	if _, ok := driverService.GetProductById(productId); !ok {
+		propertyPostReply.Code = int(constants.ProductNotFound)
+		propertyPostReply.Success = false
+		propertyPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.ProductNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId), 1, false, propertyPostReply.Marshal())
+		return
+	}
+
+	var delPropertyCode []string
+	// code 、time、max～min、len检测
+	for code, param := range propertyPost.Params {
+		if property, ok := driverService.GetProductPropertyByCode(productId, code); !ok {
+			//推送一条错误消息到客户端
+			delPropertyCode = append(delPropertyCode, code)
+			propertyPostReply.Code = int(constants.PropertyCodeNotFound)
+			propertyPostReply.Success = false
+			propertyPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.PropertyCodeNotFound]) + fmt.Sprintf(" %s is undefined", code)
+			client.Publish(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId), 1, false, propertyPostReply.Marshal())
+			continue
+		} else {
+			value := param.Value
+			if config.GetConfig().TslParamVerify {
+				//推送一条错误消息到客户端
+				if verifyErrorCode, verifyErrorMsg := verifyParam(property, param); verifyErrorCode != constants.DefaultSuccessCode {
+					delPropertyCode = append(delPropertyCode, code)
+					propertyPostReply.Code = int(verifyErrorCode)
+					propertyPostReply.Success = false
+					propertyPostReply.ErrorMessage = string(verifyErrorMsg)
+					client.Publish(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId), 1, false, propertyPostReply.Marshal())
+					continue
+				}
+			}
+			if param.Time == 0 {
+				propertyPost.Params[code] = model.PropertyData{
+					Time:  time.Now().UnixMilli(),
+					Value: value,
+				}
+			}
+		}
+	}
+	filterPropertyPost := propertyPost.Params
+	for _, code := range delPropertyCode {
+		delete(filterPropertyPost, code)
+	}
+	propertyPost.Params = filterPropertyPost
+	if len(propertyPost.Params) == 0 {
+		return
+	}
+	_, err = driverService.PropertyReport(deviceId, model.NewPropertyReport(propertyPost.Sys.Ack, propertyPost.Params))
+	if !propertyPost.Sys.Ack {
+		return
+	}
+	if err != nil {
+		propertyPostReply.Code = int(constants.SystemErrorCode)
+		propertyPostReply.Success = false
+		propertyPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.SystemErrorCode]) + " :" + err.Error()
+	} else {
+		propertyPostReply.Code = int(constants.DefaultSuccessCode)
+		propertyPostReply.Success = true
+		propertyPostReply.ErrorMessage = ""
+	}
+	client.Publish(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId, productId), 1, false, propertyPostReply.Marshal())
+}
+
+// sudDeviceEventPostCallback 子设备事件上报
+func sudDeviceEventPostCallback(client mqtt.Client, message mqtt.Message) {
+	topic := dtos.Topic(message.Topic())
+	deviceId := topic.GetThingModelTopicDeviceId()
+	productId := topic.GetThingModelTopicProductId()
+	var eventPost dtos.EventPost
+	err := json.Unmarshal(message.Payload(), &eventPost)
+
+	var eventPostReply dtos.CommonResponse
+	eventPostReply.Id = eventPost.Id
+	eventPostReply.Version = eventPost.Version
+
+	if err != nil {
+		eventPostReply.Code = int(constants.FormatErrorCode)
+		eventPostReply.Success = false
+		eventPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.FormatErrorCode])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId, productId), 1, false, eventPostReply.Marshal())
+		return
+	}
+
+	// 检查设备是否存在
+	if _, ok := driverService.GetDeviceById(deviceId); !ok {
+		eventPostReply.Code = int(constants.DeviceNotFound)
+		eventPostReply.Success = false
+		eventPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.DeviceNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId, productId), 1, false, eventPostReply.Marshal())
+		return
+	}
+
+	// 检查产品是否存在
+	if _, ok := driverService.GetProductById(productId); !ok {
+		eventPostReply.Code = int(constants.ProductNotFound)
+		eventPostReply.Success = false
+		eventPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.ProductNotFound])
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId, productId), 1, false, eventPostReply.Marshal())
+		return
+	}
+
+	// 事件code检测
+	_, ok := driverService.GetProductEventByCode(productId, eventPost.Params.EventCode)
+	if !ok {
+		eventPostReply.Code = int(constants.EventCodeNotFound)
+		eventPostReply.Success = false
+		eventPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.EventCodeNotFound]) + fmt.Sprintf(" %s is undefined", eventPost.Params.EventCode)
+		client.Publish(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId, productId), 1, false, eventPostReply.Marshal())
+		return
+	}
+
+	if eventPost.Params.EventTime == 0 {
+		eventPost.Params.EventTime = time.Now().UnixMilli()
+	}
+	_, err = driverService.EventReport(deviceId, model.NewEventReport(eventPost.Sys.Ack, eventPost.Params))
+	if !eventPost.Sys.Ack {
+		return
+	}
+	if err != nil {
+		eventPostReply.Code = int(constants.SystemErrorCode)
+		eventPostReply.Success = false
+		eventPostReply.ErrorMessage = string(constants.ErrorCodeMsgMap[constants.SystemErrorCode]) + " :" + err.Error()
+	} else {
+		eventPostReply.Code = int(constants.DefaultSuccessCode)
+		eventPostReply.Success = true
+		eventPostReply.ErrorMessage = ""
+	}
+	client.Publish(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId, productId), 1, false, eventPostReply.Marshal())
 }

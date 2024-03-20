@@ -51,7 +51,10 @@ func (dr MQTTProtocolDriver) ProductNotify(ctx context.Context, t commons.Produc
 // Stop 驱动退出通知。
 func (dr MQTTProtocolDriver) Stop(ctx context.Context) error {
 	for _, d := range dr.sd.GetDeviceList() {
-		dr.sd.Offline(d.Id)
+		err := dr.sd.Offline(d.Id)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -84,7 +87,12 @@ func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId str
 	propertySet.Id = data.MsgId
 	propertySet.Version = data.Version
 	propertySet.Params = data.Data
-	topic := fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, product.Id)
+	var topic string
+	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
+		topic = fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, product.Id)
+	} else if product.NodeType == commons.NodeTypeSubDevice {
+		topic = fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId, product.Id)
+	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil
 }
@@ -117,7 +125,12 @@ func (dr MQTTProtocolDriver) HandlePropertyGet(ctx context.Context, deviceId str
 	propertySet.Id = data.MsgId
 	propertySet.Version = data.Version
 	propertySet.Params = data.Data
-	topic := fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, product.Id)
+	var topic string
+	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
+		topic = fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, product.Id)
+	} else if product.NodeType == commons.NodeTypeSubDevice {
+		topic = fmt.Sprintf(constants.TopicSubDevicePropertyQuery, deviceId, product.Id)
+	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil
 }
@@ -150,7 +163,12 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 	propertySet.Id = data.MsgId
 	propertySet.Version = data.Version
 	propertySet.Params = data.Data
-	topic := fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, product.Id)
+	var topic string
+	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
+		topic = fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, product.Id)
+	} else if product.NodeType == commons.NodeTypeSubDevice {
+		topic = fmt.Sprintf(constants.TopicSubDeviceServiceInvoke, deviceId, product.Id)
+	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil
 }

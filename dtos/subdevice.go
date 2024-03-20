@@ -12,21 +12,18 @@
  * the License.
  *******************************************************************************/
 
-package main
+package dtos
 
-import (
-	"github.com/winc-link/hummingbird-mqtt-driver/config"
-	"github.com/winc-link/hummingbird-mqtt-driver/internal/driver"
-	"github.com/winc-link/hummingbird-sdk-go/commons"
-	"github.com/winc-link/hummingbird-sdk-go/service"
-)
+// SubDeviceOnline 子设备在线
+type SubDeviceOnline struct {
+	Id      string `json:"id"`
+	Version string `json:"version"`
+	Sys     Sys    `json:"sys"`
+}
 
-func main() {
-	driverService := service.NewDriverService("hummingbird-official-mqtt-driver", commons.HummingbirdIot)
-	config.InitConfig(driverService)
-	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
-	if err := driverService.Start(mqttDriver); err != nil {
-		driverService.GetLogger().Error("driver service start error: %s", err)
-		return
-	}
+// SubDeviceOffline 子设备离线
+type SubDeviceOffline struct {
+	Id      string `json:"id"`
+	Version string `json:"version"`
+	Sys     Sys    `json:"sys"`
 }
