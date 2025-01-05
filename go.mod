@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/DrmagicE/gmqtt v0.5.0
 	github.com/eclipse/paho.mqtt.golang v1.4.3
-	github.com/winc-link/hummingbird-sdk-go v0.0.0-20231029081056-0fbd6a6e006c
+	github.com/winc-link/hummingbird-sdk-go v0.0.0-20241218060555-0a5bdb7ad540
 )
 
 require (
