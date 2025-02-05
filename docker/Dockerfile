@@ -1,4 +1,4 @@
-ARG BASE=registry.cn-shanghai.aliyuncs.com/winc-edgex/edgex:1.18.8-alpine3.16
+ARG BASE=registry.cn-shanghai.aliyuncs.com/winc-edgex/edgex:go1.23.1-alpine3.16
 FROM ${BASE} AS builder
 
 
@@ -9,14 +9,7 @@ COPY . .
 
 RUN go build -ldflags "-s -w" -o  ./cmd/build/driver-linux-amd64  ./cmd
 
-FROM registry.cn-shanghai.aliyuncs.com/winc-edgex/alpine:3.12
-
-
-RUN apk add tzdata \
-&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-&& echo "Asia/Shanghai" >  /etc/timezone \
-&& apk del tzdata \
-
+FROM registry.cn-shanghai.aliyuncs.com/winc-edgex/alpine:3.13
 
 COPY --from=builder /simple-driver/cmd/build/driver-linux-amd64 /app/
 
