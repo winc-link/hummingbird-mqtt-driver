@@ -11,6 +11,13 @@ RUN go build -ldflags "-s -w" -o  ./cmd/build/driver-linux-amd64  ./cmd
 
 FROM registry.cn-shanghai.aliyuncs.com/winc-edgex/alpine:3.12
 
+
+RUN apk add tzdata \
+&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+&& echo "Asia/Shanghai" >  /etc/timezone \
+&& apk del tzdata \
+
+
 COPY --from=builder /simple-driver/cmd/build/driver-linux-amd64 /app/
 
 EXPOSE 1883

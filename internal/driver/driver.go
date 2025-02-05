@@ -33,11 +33,6 @@ type MQTTProtocolDriver struct {
 	mqttClient mqtt.Client
 }
 
-// CloudPluginNotify 云插件启动/停止通知
-func (dr MQTTProtocolDriver) CloudPluginNotify(ctx context.Context, t commons.CloudPluginNotifyType, name string) error {
-	return nil
-}
-
 // DeviceNotify 设备添加/修改/删除通知
 func (dr MQTTProtocolDriver) DeviceNotify(ctx context.Context, t commons.DeviceNotifyType, deviceId string, device model.Device) error {
 	return nil
@@ -94,6 +89,14 @@ func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId str
 		topic = fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId, product.Id)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
+
+	_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+		MsgId: data.MsgId,
+		Data: model.PropertySetResponseData{
+			Success: true,
+			Code:    uint32(constants.DefaultSuccessCode),
+		},
+	})
 	return nil
 }
 

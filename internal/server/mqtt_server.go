@@ -58,11 +58,11 @@ func (m *MQTTServer) Start() {
 		os.Exit(1)
 	}
 
-	l, err := c.GetLogger(c.Log)
-	if err != nil {
-		GlobalDriverService.GetLogger().Error(err.Error())
-		os.Exit(1)
-	}
+	//l, err := c.GetLogger(c.Log)
+	//if err != nil {
+	//	GlobalDriverService.GetLogger().Error(err.Error())
+	//	os.Exit(1)
+	//}
 
 	//设置Hooks
 	hooks := server.Hooks{
@@ -91,7 +91,7 @@ func (m *MQTTServer) Start() {
 		server.WithTCPListener(tcpListeners...),
 		server.WithWebsocketServer(websockets...),
 		server.WithHook(hooks),
-		server.WithLogger(l),
+		//server.WithLogger(l),
 	)
 
 	err = s.Init()

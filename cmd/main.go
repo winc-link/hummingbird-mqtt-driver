@@ -17,12 +17,11 @@ package main
 import (
 	"github.com/winc-link/hummingbird-mqtt-driver/config"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/driver"
-	"github.com/winc-link/hummingbird-sdk-go/commons"
 	"github.com/winc-link/hummingbird-sdk-go/service"
 )
 
 func main() {
-	driverService := service.NewDriverService("hummingbird-official-mqtt-driver", commons.HummingbirdIot)
+	driverService := service.NewDriverService("official-mqtt-driver-v2")
 	config.InitConfig(driverService)
 	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
 	if err := driverService.Start(mqttDriver); err != nil {
