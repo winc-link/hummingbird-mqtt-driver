@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"github.com/DrmagicE/gmqtt"
 	"github.com/DrmagicE/gmqtt/pkg/packets"
@@ -42,26 +41,26 @@ func OnSubscribe(ctx context.Context, client server.Client, req *server.Subscrib
 	if client.ClientOptions().ClientID == constants.MQTTInnerClientId {
 		return nil
 	}
-	for _, topic := range req.Subscribe.Topics {
-		t := dtos.Topic(string(topic.Name))
-		deviceId := t.GetThingModelTopicDeviceId()
-		productId := t.GetThingModelTopicProductId()
-		if deviceId == "" || productId == "" {
-			return errors.New("subscribe Unauthorized")
-		}
-		dev, ok := GlobalDriverService.GetDeviceById(deviceId)
-		if !ok {
-			return errors.New("subscribe Unauthorized")
-		}
-		product, ok := GlobalDriverService.GetProductById(productId)
-		if !ok {
-			return errors.New("subscribe Unauthorized")
-		}
-
-		if dev.ProductId != product.Id {
-			return errors.New("subscribe Unauthorized")
-		}
-	}
+	//for _, topic := range req.Subscribe.Topics {
+	//	t := dtos.Topic(string(topic.Name))
+	//	deviceId := t.GetThingModelTopicDeviceId()
+	//	productId := t.GetThingModelTopicProductId()
+	//	if deviceId == "" || productId == "" {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//	dev, ok := GlobalDriverService.GetDeviceById(deviceId)
+	//	if !ok {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//	product, ok := GlobalDriverService.GetProductById(productId)
+	//	if !ok {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//
+	//	if dev.ProductId != product.Id {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//}
 	// 如果用户想检查订阅消息时topic是否合法，请用户自行完成下面相关内容
 	//	if topic.Name == fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId) ||
 	//		topic.Name == fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId) ||

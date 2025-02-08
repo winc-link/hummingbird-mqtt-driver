@@ -61,6 +61,7 @@ func (dr MQTTProtocolDriver) Stop(ctx context.Context) error {
 
 // HandlePropertySet 设备属性设置
 func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId string, data model.PropertySet) error {
+	dr.sd.GetLogger().Infof("handle property device id %s set %v", deviceId, data)
 	device, ok := dr.sd.GetDeviceById(deviceId)
 	if ok != true {
 		_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
@@ -94,6 +95,14 @@ func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId str
 		topic = fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId, product.Id)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
+	dr.sd.GetLogger().Infof("topic  %s set data %v", topic, string(propertySet.Marshal()))
+	_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
+		MsgId: data.MsgId,
+		Data: model.PropertySetResponseData{
+			Success: true,
+			Code:    uint32(constants.DefaultSuccessCode),
+		},
+	})
 	return nil
 }
 
