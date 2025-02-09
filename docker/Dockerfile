@@ -9,11 +9,11 @@ COPY . .
 
 RUN go build -ldflags "-s -w" -o  ./cmd/build/driver-linux-amd64  ./cmd
 
-FROM alpine:3.12
+FROM registry.cn-shanghai.aliyuncs.com/winc-edgex/alpine:3.12
 
 COPY --from=builder /simple-driver/cmd/build/driver-linux-amd64 /app/
 
-EXPOSE 4000
+EXPOSE 1883
 
 RUN mkdir /logs
 

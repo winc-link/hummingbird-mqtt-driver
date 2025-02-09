@@ -16,7 +16,6 @@ package driver
 
 import (
 	"context"
-	"github.com/winc-link/hummingbird-mqtt-driver/internal/device"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/server"
 	"github.com/winc-link/hummingbird-sdk-go/commons"
 	"github.com/winc-link/hummingbird-sdk-go/model"
@@ -47,15 +46,14 @@ func (dr MQTTProtocolDriver) ProductNotify(ctx context.Context, t commons.Produc
 
 // Stop 驱动退出通知。
 func (dr MQTTProtocolDriver) Stop(ctx context.Context) error {
-	for _, dev := range device.GetAllDevice() {
-		dr.sd.Offline(dev.GetDeviceId())
+	for _, device := range dr.sd.GetDeviceList() {
+		dr.sd.Offline(device.Id)
 	}
 	return nil
 }
 
 // HandlePropertySet 设备属性设置
 func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId string, data model.PropertySet) error {
-
 	return nil
 }
 
@@ -73,16 +71,8 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 
 // NewMQTTProtocolDriver MQTT协议驱动
 func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
-	loadDevices(sd)
 	go server.NewMQTTService(sd).Start()
 	return &MQTTProtocolDriver{
 		sd: sd,
-	}
-}
-
-// loadDevices 获取所有已经创建成功的设备，保存在内存中。
-func loadDevices(sd *service.DriverService) {
-	for _, dev := range sd.GetDeviceList() {
-		device.PutDevice(dev.DeviceSn, device.NewDevice(dev.Id, dev.DeviceSn, dev.ProductId, dev.Status == commons.DeviceOnline))
 	}
 }
