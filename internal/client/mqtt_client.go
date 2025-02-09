@@ -17,44 +17,36 @@ package client
 import (
 	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/winc-link/hummingbird-mqtt-driver/constants"
 	"github.com/winc-link/hummingbird-sdk-go/service"
 )
 
-var GlobalDriverService *service.DriverService
+var driverService *service.DriverService
 
-type MQTTClient struct{}
-
-func NewMQTTClient(sd *service.DriverService) *MQTTClient {
-	GlobalDriverService = sd
-	return &MQTTClient{}
-}
-
-var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Message) {
-	GlobalDriverService.GetLogger().Infof("Received message: %s from topic: %s\n", msg.Payload(), msg.Topic())
-}
-
-var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
-	GlobalDriverService.GetLogger().Infof("Connected")
-}
-
-var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) {
-	GlobalDriverService.GetLogger().Infof("Connect lost: %v", err)
-}
-
-var broker = ""
-var port = 0
-
-func (ca *MQTTClient) Start() {
+func NewMQTTClient(sd *service.DriverService) mqtt.Client {
+	driverService = sd
 	opts := mqtt.NewClientOptions()
-	opts.AddBroker(fmt.Sprintf("tcp://%s:%d", broker, port))
-	opts.SetClientID("")
-	opts.SetUsername("")
-	opts.SetPassword("")
-	opts.SetDefaultPublishHandler(messagePubHandler)
+	opts.AddBroker(fmt.Sprintf("tcp://%s:%d", "0.0.0.0", 1883))
+	opts.SetClientID(constants.MQTTInnerClientId)
+	opts.SetUsername(constants.MQTTInnerUsername)
+	opts.SetPassword(constants.MQTTInnerPassword)
+	opts.SetAutoReconnect(true)
 	opts.OnConnect = connectHandler
 	opts.OnConnectionLost = connectLostHandler
 	client := mqtt.NewClient(opts)
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
 		panic(token.Error())
 	}
+
+	//todo your MQTT subscription logic code
+
+	return client
+}
+
+var connectHandler mqtt.OnConnectHandler = func(client mqtt.Client) {
+	driverService.GetLogger().Infof("Connected")
+}
+
+var connectLostHandler mqtt.ConnectionLostHandler = func(client mqtt.Client, err error) {
+	driverService.GetLogger().Infof("Connect lost: %v", err)
 }

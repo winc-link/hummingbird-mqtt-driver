@@ -19,6 +19,7 @@ import (
 	"github.com/DrmagicE/gmqtt"
 	"github.com/DrmagicE/gmqtt/pkg/packets"
 	"github.com/DrmagicE/gmqtt/server"
+	"github.com/winc-link/hummingbird-mqtt-driver/constants"
 	"net"
 )
 
@@ -60,6 +61,15 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 // OnBasicAuth 收到连接请求报文时调用
 // 客户端连接鉴权
 func OnBasicAuth(ctx context.Context, client server.Client, req *server.ConnectRequest) (err error) {
+	clientId := string(req.Connect.ClientID)
+	username := string(req.Connect.Username)
+	password := string(req.Connect.Password)
+
+	if clientId == constants.MQTTInnerClientId && username == constants.MQTTInnerUsername && password == constants.MQTTInnerPassword {
+		return nil
+	}
+
+	// todo your authentication logic code
 	return nil
 }
 

@@ -16,14 +16,18 @@ package driver
 
 import (
 	"context"
+	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/winc-link/hummingbird-mqtt-driver/internal/client"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/server"
 	"github.com/winc-link/hummingbird-sdk-go/commons"
 	"github.com/winc-link/hummingbird-sdk-go/model"
 	"github.com/winc-link/hummingbird-sdk-go/service"
+	"time"
 )
 
 type MQTTProtocolDriver struct {
-	sd *service.DriverService
+	sd         *service.DriverService
+	mqttClient mqtt.Client
 }
 
 // CloudPluginNotify 云插件启动/停止通知
@@ -72,7 +76,9 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 // NewMQTTProtocolDriver MQTT协议驱动
 func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
 	go server.NewMQTTService(sd).Start()
+	time.Sleep(1 * time.Second)
 	return &MQTTProtocolDriver{
-		sd: sd,
+		sd:         sd,
+		mqttClient: client.NewMQTTClient(sd),
 	}
 }
