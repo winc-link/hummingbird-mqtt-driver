@@ -6,7 +6,7 @@ LogLevel = "INFO"
 
 [Clients]
 [Clients.Core]
-Address = "127.0.0.1:57081"
+Address = "demo.winc-link.com:57081"
 UseTLS = false
 CertFilePath = ""
 ClientId = ""
@@ -14,8 +14,8 @@ Username = ""
 Password = ""
 
 [Service]
-ID = "07383748"
-Name = "MQTT协议驱动-07383748"
+ID = "76453630"
+Name = "MQTT协议驱动-7645363"
 Activated = false
 [Service.Server]
 Address = "0.0.0.0:41372"

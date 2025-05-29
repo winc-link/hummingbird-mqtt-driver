@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/DrmagicE/gmqtt v0.5.0
 	github.com/eclipse/paho.mqtt.golang v1.4.3
-	github.com/winc-link/hummingbird-sdk-go v0.0.0-20250205034442-274be98fbda1
+	github.com/winc-link/hummingbird-sdk-go v0.0.0-20250527055146-fe95567a6dd0
 )
 
 require (
@@ -29,7 +29,7 @@ require (
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.9.1 // indirect
 	github.com/prometheus/procfs v0.0.8 // indirect
-	github.com/winc-link/edge-driver-proto v0.0.0-20250202082005-d2ba4a4e3ef5 // indirect
+	github.com/winc-link/edge-driver-proto v0.0.0-20250527031342-adc1bd4485c0 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
