@@ -14,11 +14,9 @@
 
 package dtos
 
-import "github.com/winc-link/hummingbird-sdk-go/model"
-
-type EventPost struct {
-	Id      string          `json:"id"`
-	Version string          `json:"version"`
-	Sys     Sys             `json:"sys"`
-	Params  model.EventData `json:"params"`
-}
+//type EventPost struct {
+//	Id      string          `json:"id"`
+//	Version string          `json:"version"`
+//	Sys     Sys             `json:"sys"`
+//	Params  model.EventData `json:"params"`
+//}

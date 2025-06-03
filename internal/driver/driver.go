@@ -20,8 +20,8 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
 	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
-	"github.com/winc-link/hummingbird-mqtt-driver/internal/client"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/server"
+	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
 	"github.com/winc-link/hummingbird-sdk-go/commons"
 	"github.com/winc-link/hummingbird-sdk-go/model"
 	"github.com/winc-link/hummingbird-sdk-go/service"
@@ -79,9 +79,9 @@ func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId str
 		})
 	}
 	var propertySet dtos.PropertySet
-	propertySet.Id = data.MsgId
+	propertySet.MsgId = data.MsgId
 	propertySet.Version = data.Version
-	propertySet.Params = data.Data
+	propertySet.Data = data.Data
 	var topic string
 	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
 		topic = fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, product.Id)
@@ -89,14 +89,6 @@ func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId str
 		topic = fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId, product.Id)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
-
-	_ = dr.sd.PropertySetResponse(deviceId, model.PropertySetResponse{
-		MsgId: data.MsgId,
-		Data: model.PropertySetResponseData{
-			Success: true,
-			Code:    uint32(constants.DefaultSuccessCode),
-		},
-	})
 	return nil
 }
 
@@ -182,6 +174,6 @@ func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
 	time.Sleep(2 * time.Second)
 	return &MQTTProtocolDriver{
 		sd:         sd,
-		mqttClient: client.NewMQTTClient(sd),
+		mqttClient: mqttclient.NewMQTTClient(sd),
 	}
 }

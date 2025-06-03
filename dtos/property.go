@@ -19,28 +19,15 @@ import (
 	"github.com/winc-link/hummingbird-sdk-go/model"
 )
 
-// PropertyPost 属性上报
-type PropertyPost struct {
-	Id      string                        `json:"id"`
-	Version string                        `json:"version"`
-	Sys     Sys                           `json:"sys"`
-	Params  map[string]model.PropertyData `json:"params"`
-}
-
 type Sys struct {
 	Ack bool `json:"ack"`
 }
 
-type Params struct {
-	Value interface{} `json:"value"`
-	Time  int64       `json:"time"`
-}
-
 // PropertySet 属性设置
 type PropertySet struct {
-	Id      string                 `json:"id"`
+	MsgId   string                 `json:"msgId"`
 	Version string                 `json:"version"`
-	Params  map[string]interface{} `json:"params"`
+	Data    map[string]interface{} `json:"data"`
 }
 
 func (p *PropertySet) Marshal() []byte {
@@ -62,8 +49,8 @@ func (p *PropertyQuery) Marshal() []byte {
 
 // PropertySetReply 设置设备属性响应
 type PropertySetReply struct {
-	Id     string                        `json:"id"`
-	Params model.PropertySetResponseData `json:"params"`
+	Id   string                        `json:"id"`
+	Data model.PropertySetResponseData `json:"data"`
 }
 
 func (p *PropertySetReply) Marshal() []byte {

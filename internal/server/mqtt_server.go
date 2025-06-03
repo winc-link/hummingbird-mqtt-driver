@@ -16,15 +16,13 @@ package server
 
 import (
 	"crypto/tls"
-	"net"
-	"net/http"
-	"os"
-
-	"github.com/winc-link/hummingbird-sdk-go/service"
-
 	"github.com/DrmagicE/gmqtt/config"
 	"github.com/DrmagicE/gmqtt/pkg/pidfile"
 	"github.com/DrmagicE/gmqtt/server"
+	"github.com/winc-link/hummingbird-sdk-go/service"
+	"net"
+	"net/http"
+	"os"
 
 	_ "github.com/DrmagicE/gmqtt/persistence"
 	_ "github.com/DrmagicE/gmqtt/plugin/prometheus"
@@ -99,13 +97,13 @@ func (m *MQTTServer) Start() {
 		GlobalDriverService.GetLogger().Error(err.Error())
 		os.Exit(1)
 	}
-
 	//启动server
 	err = s.Run()
 	if err != nil {
 		GlobalDriverService.GetLogger().Error(err.Error())
 		os.Exit(1)
 	}
+
 }
 
 func GetListeners(c config.Config) (tcpListeners []net.Listener, websockets []*server.WsServer, err error) {

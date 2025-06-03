@@ -16,15 +16,18 @@ package server
 
 import (
 	"context"
-	"errors"
+	"encoding/json"
 	"fmt"
 	"github.com/DrmagicE/gmqtt"
 	"github.com/DrmagicE/gmqtt/pkg/packets"
 	"github.com/DrmagicE/gmqtt/server"
 	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
 	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
-	"github.com/winc-link/hummingbird-mqtt-driver/internal/pkg/tool"
+	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
+
+	"github.com/winc-link/hummingbird-sdk-go/model"
 	"net"
+	"strings"
 )
 
 // OnAccept TCP连接建立时调用
@@ -42,27 +45,26 @@ func OnSubscribe(ctx context.Context, client server.Client, req *server.Subscrib
 	if client.ClientOptions().ClientID == constants.MQTTInnerClientId {
 		return nil
 	}
-	for _, topic := range req.Subscribe.Topics {
-		t := dtos.Topic(string(topic.Name))
-		deviceId := t.GetThingModelTopicDeviceId()
-		productId := t.GetThingModelTopicProductId()
-		if deviceId == "" || productId == "" {
-			return errors.New("subscribe Unauthorized")
-		}
-		dev, ok := GlobalDriverService.GetDeviceById(deviceId)
-		if !ok {
-			return errors.New("subscribe Unauthorized")
-		}
-		product, ok := GlobalDriverService.GetProductById(productId)
-		if !ok {
-			return errors.New("subscribe Unauthorized")
-		}
-
-		if dev.ProductId != product.Id {
-			return errors.New("subscribe Unauthorized")
-		}
-	}
-	// 如果用户想检查订阅消息时topic是否合法，请用户自行完成下面相关内容
+	//for _, topic := range req.Subscribe.Topics {
+	//	t := dtos.Topic(string(topic.Name))
+	//	deviceId := t.GetThingModelTopicDeviceId()
+	//	productId := t.GetThingModelTopicProductId()
+	//	if deviceId == "" || productId == "" {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//	dev, ok := GlobalDriverService.GetDeviceById(deviceId)
+	//	if !ok {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//	product, ok := GlobalDriverService.GetProductById(productId)
+	//	if !ok {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//
+	//	if dev.ProductId != product.Id {
+	//		return errors.New("subscribe Unauthorized")
+	//	}
+	//	//如果用户想检查订阅消息时topic是否合法，请用户自行完成下面相关内容
 	//	if topic.Name == fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId) ||
 	//		topic.Name == fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId) ||
 	//		topic.Name == fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, productId) ||
@@ -103,7 +105,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 	if client.ClientOptions().ClientID == constants.MQTTInnerClientId {
 		return nil
 	}
-	topic := dtos.Topic(string(req.Publish.TopicName))
+	topic := dtos.Topic(req.Publish.TopicName)
 	deviceId := topic.GetThingModelTopicDeviceId()
 	productId := topic.GetThingModelTopicProductId()
 	device, ok := GlobalDriverService.GetDeviceById(deviceId)
@@ -117,27 +119,75 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 	if device.ProductId != product.Id {
 		return fmt.Errorf("unauthorized")
 	}
-	// 如果用户想检查收到消息时topic是否合法，请用户自行完成下面相关内容
-	//if string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/post", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/event/post", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/query_reply", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/property/set_reply", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/service/invoke_reply", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/online", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/offline", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/property/post", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/event/post", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/property/set_reply", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/property/query_reply", deviceId, productId) ||
-	//	string(topic) == fmt.Sprintf(constants.TopicPrefix+"%s/%s/thing/sub/service/invoke_reply", deviceId, productId) {
-	//	return nil
-	//}
-	// todo 消息改写。可以在物联网页面使用javascript或者php书写一段消息解析代码，然后把这段代码下发到驱动中，驱动根据这段代码动态解析设备上报数据，可以使用如下仓库来实现此功能。
-	//java script
-	//https://github.com/robertkrimen/otto
-	//php
-	//https://github.com/deuill/go-php
-	//go ?
+	if strings.Contains(string(topic), "thing/property/post") {
+		payload := req.Message.Payload
+		var reportMessage model.PropertyReport
+		err := json.Unmarshal(payload, &reportMessage)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] report property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		commResp, err := GlobalDriverService.PropertyReport(deviceId, reportMessage)
+		if reportMessage.Sys.Ack {
+			b, _ := json.Marshal(commResp)
+			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId), b)
+		} else {
+			return nil
+		}
+	} else if strings.Contains(string(topic), "thing/event/post") {
+		payload := req.Message.Payload
+		var reportMessage model.EventReport
+		err := json.Unmarshal(payload, &reportMessage)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] report event failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		commResp, err := GlobalDriverService.EventReport(deviceId, reportMessage)
+		if reportMessage.Sys.Ack {
+			b, _ := json.Marshal(commResp)
+			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId), b)
+		} else {
+			return nil
+		}
+
+	} else if strings.Contains(string(topic), "thing/property/set_reply") {
+		payload := req.Message.Payload
+		var propertySetReply model.PropertySetResponse
+		err := json.Unmarshal(payload, &propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] set_reply failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.PropertySetResponse(deviceId, propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] set_reply failed! error:%v", deviceId, err.Error())
+		}
+
+	} else if strings.Contains(string(topic), "thing/property/query_reply") {
+		payload := req.Message.Payload
+		var propertySetReply model.PropertyGetResponse
+		err := json.Unmarshal(payload, &propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] get property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.PropertyGetResponse(deviceId, propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] get property failed! error:%v", deviceId, err.Error())
+		}
+	} else if strings.Contains(string(topic), "thing/service/invoke_reply") {
+		payload := req.Message.Payload
+		var executeResponse model.ServiceExecuteResponse
+		err := json.Unmarshal(payload, &executeResponse)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] get property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.ServiceExecuteResponse(deviceId, executeResponse)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("device [%s] get property failed! error:%v", deviceId, err.Error())
+		}
+	}
 	return nil
 }
 
@@ -157,6 +207,9 @@ func OnBasicAuth(ctx context.Context, client server.Client, req *server.ConnectR
 	if !ok {
 		return fmt.Errorf("unauthorized")
 	}
+	if clientId != dev.Id {
+		return fmt.Errorf("unauthorized")
+	}
 	product, ok := GlobalDriverService.GetProductById(dev.ProductId)
 	if !ok {
 		return fmt.Errorf("unauthorized")
@@ -164,7 +217,7 @@ func OnBasicAuth(ctx context.Context, client server.Client, req *server.ConnectR
 	if username != (dev.Id + "&" + product.Key) {
 		return fmt.Errorf("unauthorized")
 	}
-	if password != tool.HmacMd5(dev.Secret, dev.Id+"&"+product.Key) {
+	if password != dev.Secret {
 		return fmt.Errorf("unauthorized")
 	}
 	err = GlobalDriverService.Online(clientId)
