@@ -187,6 +187,20 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		if err != nil {
 			GlobalDriverService.GetLogger().Errorf("device [%s] get property failed! error:%v", deviceId, err.Error())
 		}
+	} else if strings.Contains(string(topic), "thing/sub/online") {
+
+	} else if strings.Contains(string(topic), "thing/sub/offline") {
+
+	} else if strings.Contains(string(topic), "thing/sub/property/post") {
+
+	} else if strings.Contains(string(topic), "thing/sub/event/post") {
+
+	} else if strings.Contains(string(topic), "thing/sub/property/set_reply") {
+
+	} else if strings.Contains(string(topic), "thing/sub/property/query_reply") {
+
+	} else if strings.Contains(string(topic), "thing/sub/service/invoke_reply") {
+
 	}
 	return nil
 }
