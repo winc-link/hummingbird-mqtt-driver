@@ -16,14 +16,14 @@ package dtos
 
 // SubDeviceOnline 子设备在线
 type SubDeviceOnline struct {
-	Id      string `json:"id"`
+	MsgId   string `json:"msgId"`
 	Version string `json:"version"`
 	Sys     Sys    `json:"sys"`
 }
 
 // SubDeviceOffline 子设备离线
 type SubDeviceOffline struct {
-	Id      string `json:"id"`
+	MsgId   string `json:"msgId"`
 	Version string `json:"version"`
 	Sys     Sys    `json:"sys"`
 }

@@ -107,11 +107,11 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 	}
 	topic := dtos.Topic(req.Publish.TopicName)
 	deviceId := topic.GetThingModelTopicDeviceId()
-	productId := topic.GetThingModelTopicProductId()
 	device, ok := GlobalDriverService.GetDeviceById(deviceId)
 	if !ok {
 		return fmt.Errorf("unauthorized")
 	}
+	productId := device.ProductId
 	product, ok := GlobalDriverService.GetProductById(productId)
 	if !ok {
 		return fmt.Errorf("unauthorized")
@@ -127,10 +127,11 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 			GlobalDriverService.GetLogger().Errorf("device [%s] report property failed! error:%v", deviceId, err.Error())
 			return err
 		}
+
 		commResp, err := GlobalDriverService.PropertyReport(deviceId, reportMessage)
 		if reportMessage.Sys.Ack {
 			b, _ := json.Marshal(commResp)
-			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId, productId), b)
+			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId), b)
 		} else {
 			return nil
 		}
@@ -145,11 +146,10 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		commResp, err := GlobalDriverService.EventReport(deviceId, reportMessage)
 		if reportMessage.Sys.Ack {
 			b, _ := json.Marshal(commResp)
-			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId, productId), b)
+			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId), b)
 		} else {
 			return nil
 		}
-
 	} else if strings.Contains(string(topic), "thing/property/set_reply") {
 		payload := req.Message.Payload
 		var propertySetReply model.PropertySetResponse
@@ -188,19 +188,97 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 			GlobalDriverService.GetLogger().Errorf("device [%s] get property failed! error:%v", deviceId, err.Error())
 		}
 	} else if strings.Contains(string(topic), "thing/sub/online") {
-
+		payload := req.Message.Payload
+		var executeResponse dtos.SubDeviceOnline
+		err := json.Unmarshal(payload, &executeResponse)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.Online(deviceId)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] online failed! error:%v", deviceId, err.Error())
+		}
 	} else if strings.Contains(string(topic), "thing/sub/offline") {
+		payload := req.Message.Payload
+		var executeResponse dtos.SubDeviceOffline
+		err := json.Unmarshal(payload, &executeResponse)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.Offline(deviceId)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] offline failed! error:%v", deviceId, err.Error())
+		}
 
 	} else if strings.Contains(string(topic), "thing/sub/property/post") {
-
+		payload := req.Message.Payload
+		var reportMessage model.PropertyReport
+		err := json.Unmarshal(payload, &reportMessage)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] report property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		commResp, err := GlobalDriverService.PropertyReport(deviceId, reportMessage)
+		if reportMessage.Sys.Ack {
+			b, _ := json.Marshal(commResp)
+			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId), b)
+		} else {
+			return nil
+		}
 	} else if strings.Contains(string(topic), "thing/sub/event/post") {
-
+		payload := req.Message.Payload
+		var reportMessage model.EventReport
+		err := json.Unmarshal(payload, &reportMessage)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] report event failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		commResp, err := GlobalDriverService.EventReport(deviceId, reportMessage)
+		if reportMessage.Sys.Ack {
+			b, _ := json.Marshal(commResp)
+			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId), b)
+		} else {
+			return nil
+		}
 	} else if strings.Contains(string(topic), "thing/sub/property/set_reply") {
+		payload := req.Message.Payload
+		var propertySetReply model.PropertySetResponse
+		err := json.Unmarshal(payload, &propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] set_reply failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.PropertySetResponse(deviceId, propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] set_reply failed! error:%v", deviceId, err.Error())
+		}
 
 	} else if strings.Contains(string(topic), "thing/sub/property/query_reply") {
-
+		payload := req.Message.Payload
+		var propertySetReply model.PropertyGetResponse
+		err := json.Unmarshal(payload, &propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.PropertyGetResponse(deviceId, propertySetReply)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+		}
 	} else if strings.Contains(string(topic), "thing/sub/service/invoke_reply") {
-
+		payload := req.Message.Payload
+		var executeResponse model.ServiceExecuteResponse
+		err := json.Unmarshal(payload, &executeResponse)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		err = GlobalDriverService.ServiceExecuteResponse(deviceId, executeResponse)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+		}
 	}
 	return nil
 }
@@ -279,12 +357,19 @@ func OnDelivered(ctx context.Context, client server.Client, msg *gmqtt.Message) 
 func OnClosed(ctx context.Context, client server.Client, err error) {
 	clientId := client.ClientOptions().ClientID
 	if clientId != constants.MQTTInnerClientId {
-		err = GlobalDriverService.Offline(clientId)
-		if err != nil {
-			GlobalDriverService.GetLogger().Errorf("device offline err:%s", err.Error())
+		_, ok := GlobalDriverService.GetDeviceById(clientId)
+		if ok {
+			err = GlobalDriverService.Offline(clientId)
+			if err != nil {
+				GlobalDriverService.GetLogger().Errorf("device offline err:%s", err.Error())
+			}
+			for _, dev := range GlobalDriverService.GetDeviceList() {
+				if dev.ParentId == clientId {
+					GlobalDriverService.Offline(clientId)
+				}
+			}
 		}
 	}
-
 }
 
 // OnMsgDropped 消息被丢弃时调用

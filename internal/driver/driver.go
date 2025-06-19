@@ -84,9 +84,9 @@ func (dr MQTTProtocolDriver) HandlePropertySet(ctx context.Context, deviceId str
 	propertySet.Data = data.Data
 	var topic string
 	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
-		topic = fmt.Sprintf(constants.TopicDevicePropertySet, deviceId, product.Id)
+		topic = fmt.Sprintf(constants.TopicDevicePropertySet, deviceId)
 	} else if product.NodeType == commons.NodeTypeSubDevice {
-		topic = fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId, product.Id)
+		topic = fmt.Sprintf(constants.TopicSubDevicePropertySet, deviceId)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil
@@ -122,9 +122,9 @@ func (dr MQTTProtocolDriver) HandlePropertyGet(ctx context.Context, deviceId str
 	propertySet.Params = data.Data
 	var topic string
 	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
-		topic = fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId, product.Id)
+		topic = fmt.Sprintf(constants.TopicDevicePropertyQuery, deviceId)
 	} else if product.NodeType == commons.NodeTypeSubDevice {
-		topic = fmt.Sprintf(constants.TopicSubDevicePropertyQuery, deviceId, product.Id)
+		topic = fmt.Sprintf(constants.TopicSubDevicePropertyQuery, deviceId)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil
@@ -160,9 +160,9 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 	propertySet.Params = data.Data
 	var topic string
 	if product.NodeType == commons.NodeTypeGateway || product.NodeType == commons.NodeTypeDevice {
-		topic = fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId, product.Id)
+		topic = fmt.Sprintf(constants.TopicDeviceServiceInvoke, deviceId)
 	} else if product.NodeType == commons.NodeTypeSubDevice {
-		topic = fmt.Sprintf(constants.TopicSubDeviceServiceInvoke, deviceId, product.Id)
+		topic = fmt.Sprintf(constants.TopicSubDeviceServiceInvoke, deviceId)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
 	return nil

@@ -26,10 +26,10 @@ func (a Topic) GetThingModelTopicDeviceId() string {
 	return ""
 }
 
-func (a Topic) GetThingModelTopicProductId() string {
-	ss := strings.Split(string(a), "/")
-	if len(ss) >= 3 {
-		return ss[3]
-	}
-	return ""
-}
+//func (a Topic) GetThingModelTopicProductId() string {
+//	ss := strings.Split(string(a), "/")
+//	if len(ss) >= 3 {
+//		return ss[3]
+//	}
+//	return ""
+//}
