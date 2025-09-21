@@ -23,6 +23,7 @@ import (
 	"github.com/DrmagicE/gmqtt/server"
 	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
 	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
+	"github.com/winc-link/hummingbird-mqtt-driver/internal/deviceonline"
 	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
 
 	"github.com/winc-link/hummingbird-sdk-go/model"
@@ -129,6 +130,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		}
 
 		commResp, err := GlobalDriverService.PropertyReport(deviceId, reportMessage)
+		deviceonline.UpdateDeviceLastReportTime(deviceId)
 		if reportMessage.Sys.Ack {
 			b, _ := json.Marshal(commResp)
 			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDevicePropertyReportReply, deviceId), b)
@@ -144,6 +146,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 			return err
 		}
 		commResp, err := GlobalDriverService.EventReport(deviceId, reportMessage)
+		deviceonline.UpdateDeviceLastReportTime(deviceId)
 		if reportMessage.Sys.Ack {
 			b, _ := json.Marshal(commResp)
 			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicDeviceEventReportReply, deviceId), b)
@@ -221,6 +224,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 			return err
 		}
 		commResp, err := GlobalDriverService.PropertyReport(deviceId, reportMessage)
+		deviceonline.UpdateDeviceLastReportTime(deviceId)
 		if reportMessage.Sys.Ack {
 			b, _ := json.Marshal(commResp)
 			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicSubDevicePropertyReportReply, deviceId), b)
@@ -236,6 +240,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 			return err
 		}
 		commResp, err := GlobalDriverService.EventReport(deviceId, reportMessage)
+		deviceonline.UpdateDeviceLastReportTime(deviceId)
 		if reportMessage.Sys.Ack {
 			b, _ := json.Marshal(commResp)
 			mqttclient.DeviceMessageReportReply(fmt.Sprintf(constants.TopicSubDeviceEventReportReply, deviceId), b)

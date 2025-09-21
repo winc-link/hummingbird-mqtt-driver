@@ -15,12 +15,14 @@
 package main
 
 import (
+	"github.com/winc-link/hummingbird-mqtt-driver/config"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/driver"
 	"github.com/winc-link/hummingbird-sdk-go/service"
 )
 
 func main() {
 	driverService := service.NewDriverService("official-mqtt-driver-v2.7")
+	config.InitConfig(driverService)
 	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
 	if err := driverService.Start(mqttDriver); err != nil {
 		driverService.GetLogger().Error("driver service start error: %s", err)

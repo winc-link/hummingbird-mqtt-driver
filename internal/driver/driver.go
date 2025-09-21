@@ -18,8 +18,10 @@ import (
 	"context"
 	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/winc-link/hummingbird-mqtt-driver/config"
 	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
 	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
+	"github.com/winc-link/hummingbird-mqtt-driver/internal/deviceonline"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/server"
 	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
 	"github.com/winc-link/hummingbird-sdk-go/commons"
@@ -35,6 +37,12 @@ type MQTTProtocolDriver struct {
 
 // DeviceNotify 设备添加/修改/删除通知
 func (dr MQTTProtocolDriver) DeviceNotify(ctx context.Context, t commons.DeviceNotifyType, deviceId string, device model.Device) error {
+	switch t {
+	case commons.DeviceAddNotify:
+		deviceonline.AddDeviceStatusTimeController(device)
+	case commons.DeviceDeleteNotify:
+		deviceonline.DelDeviceStatusTimeController(deviceId)
+	}
 	return nil
 }
 
@@ -170,6 +178,15 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 
 // NewMQTTProtocolDriver MQTT协议驱动
 func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
+	cfg := config.GetConfig()
+	if cfg.OnlineType == constants.CustomOnline && cfg.Interval > 0 {
+		sd.GetLogger().Infof("onlineType: %s,interval: %d", cfg.OnlineType, cfg.Interval)
+		deviceonline.InitDeviceStatusTimeController(sd)
+		for _, device := range sd.GetDeviceList() {
+			deviceonline.AddDeviceStatusTimeController(device)
+		}
+	}
+
 	go server.NewMQTTService(sd).Start()
 	time.Sleep(2 * time.Second)
 	return &MQTTProtocolDriver{

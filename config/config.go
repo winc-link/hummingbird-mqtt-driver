@@ -23,7 +23,9 @@ var baseConfig *BaseConfig
 
 type BaseConfig struct {
 	//用户自行定义结构体中信息。
-	TslParamVerify bool `json:"tsl_param_verify"`
+	TslParamVerify bool   `json:"tsl_param_verify"`
+	OnlineType     string `json:"online_type"` //默认connectOnline，自定义：customOnline
+	Interval       int    `json:"interval"`
 }
 
 func InitConfig(sd *service.DriverService) {
