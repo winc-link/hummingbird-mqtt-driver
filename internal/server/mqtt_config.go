@@ -24,10 +24,10 @@ var DefaultListeners = []*config.ListenerConfig{
 		TLSOptions: nil,
 		Websocket:  nil,
 	},
-	//{
-	//	Address: "0.0.0.0:8883",
-	//	Websocket: &config.WebsocketOptions{
-	//		Path: "/",
-	//	},
-	//},
+	{
+		Address: "0.0.0.0:8883",
+		Websocket: &config.WebsocketOptions{
+			Path: "/",
+		},
+	},
 }
