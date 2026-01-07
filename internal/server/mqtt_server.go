@@ -17,16 +17,16 @@ package server
 import (
 	"crypto/tls"
 	"github.com/DrmagicE/gmqtt/config"
+	_ "github.com/DrmagicE/gmqtt/persistence"
 	"github.com/DrmagicE/gmqtt/pkg/pidfile"
+	_ "github.com/DrmagicE/gmqtt/plugin/prometheus"
 	"github.com/DrmagicE/gmqtt/server"
+	_ "github.com/DrmagicE/gmqtt/topicalias/fifo"
 	"github.com/winc-link/hummingbird-sdk-go/service"
 	"net"
 	"net/http"
 	"os"
-
-	_ "github.com/DrmagicE/gmqtt/persistence"
-	_ "github.com/DrmagicE/gmqtt/plugin/prometheus"
-	_ "github.com/DrmagicE/gmqtt/topicalias/fifo"
+	"time"
 )
 
 var GlobalDriverService *service.DriverService
@@ -50,6 +50,20 @@ func (m *MQTTServer) Start() {
 		defer pid.Remove()
 	}
 
+	cfg := GlobalDriverService.GetHummingbirdDataConfig()
+	if cfg.RedisBases.Address != "" {
+		c.Persistence.Type = config.PersistenceTypeRedis
+		maxIdle := uint(100)
+		maxActive := uint(100)
+		c.Persistence.Redis = config.RedisPersistence{
+			Addr:        cfg.RedisBases.Address,
+			Password:    cfg.RedisBases.Password,
+			Database:    1,
+			MaxIdle:     &maxIdle,
+			MaxActive:   &maxActive,
+			IdleTimeout: 240 * time.Second,
+		}
+	}
 	tcpListeners, websockets, err := GetListeners(c)
 	if err != nil {
 		GlobalDriverService.GetLogger().Error(err.Error())

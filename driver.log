@@ -1,0 +1,489 @@
+2026-01-04T16:29:43.884+0800 [31mERROR[0m service/service.go:280 init meta bases db error: failed to connect to meta bases: dial tcp: lookup mysql8: no such host
+2026-01-04T16:33:01.909+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T16:33:01.909+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T16:33:01.910+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T16:34:12.156+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T16:34:13.653+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T16:34:13.654+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T16:34:13.654+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T16:37:54.446+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T16:37:54.446+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T16:37:54.445+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T16:40:34.943+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T16:40:36.543+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T16:40:36.548+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T16:40:36.548+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T16:41:00.849+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T16:41:00.850+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T16:41:00.850+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T16:41:40.410+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T16:41:41.904+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T16:41:41.905+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T16:41:41.905+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T16:41:48.279+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T16:41:48.280+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T16:41:48.280+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T16:43:16.658+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T16:43:18.121+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T16:43:18.121+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T16:43:18.121+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T16:43:37.848+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T16:43:37.849+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T16:43:37.849+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T16:57:02.831+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T16:57:04.186+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T16:57:04.187+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T16:57:04.187+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:01:50.529+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:01:50.530+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:01:50.531+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T17:08:27.517+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T17:08:28.655+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T17:08:28.655+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T17:08:28.655+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:08:35.126+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:08:35.126+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T17:08:35.126+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:15:13.162+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T17:15:14.249+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T17:15:14.250+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T17:15:14.250+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:15:20.782+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:15:20.782+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:15:20.784+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T17:15:40.783+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T17:15:42.161+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T17:15:42.162+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T17:15:42.162+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:15:48.639+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:15:48.640+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:15:48.640+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T17:19:40.104+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T17:19:41.364+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T17:19:41.365+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T17:19:41.365+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:19:58.895+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T17:20:01.251+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:20:01.251+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:20:01.251+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T17:20:34.454+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{37159496 1767518424373 map[temp:33]} {37159496 1767518425689 map[temp:33]} {37159496 1767518426551 map[temp:33]} {37159496 1767518427289 map[temp:33]} {37159496 1767518428194 map[temp:33]} {37159496 1767518428936 map[temp:33]} {37159496 1767518429718 map[temp:33]} {37159496 1767518430445 map[temp:33]} {37159496 1767518431203 map[temp:33]}]
+2026-01-04T17:20:44.454+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{37159496 1767518435968 map[temp:33]}]
+2026-01-04T17:33:58.615+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T17:33:59.798+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T17:33:59.804+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T17:33:59.804+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:34:05.479+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T17:34:07.812+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:34:07.813+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:34:07.813+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T17:35:14.768+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{37159496 1767519304692 map[temp:33]} {37159496 1767519304867 map[temp:33]} {37159496 1767519305236 map[temp:33]} {37159496 1767519305560 map[temp:33]} {37159496 1767519305919 map[temp:33]}]
+2026-01-04T17:42:39.461+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T17:42:41.187+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T17:42:41.191+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T17:42:41.191+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T17:42:45.923+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T17:42:48.324+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T17:42:48.324+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T17:42:48.324+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T18:18:24.242+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T18:18:25.412+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T18:18:25.417+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T18:18:25.417+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T18:18:29.679+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T18:18:32.014+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T18:18:32.015+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T18:18:32.015+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T18:19:13.275+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{37159496 1767521943191 map[temp:33]} {37159496 1767521944928 map[temp:33]} {37159496 1767521945446 map[temp:33]} {37159496 1767521945835 map[temp:33]} {37159496 1767521946158 map[temp:33]} {37159496 1767521946486 map[temp:33]} {37159496 1767521946770 map[temp:33]} {37159496 1767521947073 map[temp:33]}]
+2026-01-04T18:20:33.932+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T18:20:35.623+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T18:20:35.626+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T18:20:35.626+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T18:20:44.377+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T18:20:46.638+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T18:20:46.639+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T18:20:46.639+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T18:20:55.599+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522045530 map[battery_percentage:55 co_value:79 pir_state:0 temp:31]} {72816757 1767522046598 map[battery_percentage:59 co_value:71 pir_state:0 temp:34]} {72816757 1767522047652 map[battery_percentage:50 co_value:77 pir_state:0 temp:36]} {72816757 1767522048721 map[battery_percentage:52 co_value:73 pir_state:0 temp:35]} {72816757 1767522049791 map[battery_percentage:50 co_value:73 pir_state:0 temp:33]} {72816757 1767522050848 map[battery_percentage:53 co_value:72 pir_state:0 temp:31]} {72816757 1767522051921 map[battery_percentage:54 co_value:80 pir_state:0 temp:36]} {72816757 1767522053007 map[battery_percentage:53 co_value:77 pir_state:0 temp:38]} {72816757 1767522054071 map[battery_percentage:50 co_value:78 pir_state:0 temp:36]} {72816757 1767522055135 map[battery_percentage:54 co_value:78 pir_state:0 temp:34]}]
+2026-01-04T18:21:05.599+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522056210 map[battery_percentage:52 co_value:78 pir_state:0 temp:38]} {72816757 1767522057271 map[battery_percentage:54 co_value:73 pir_state:0 temp:37]} {72816757 1767522058328 map[battery_percentage:53 co_value:74 pir_state:0 temp:38]} {72816757 1767522059393 map[battery_percentage:60 co_value:80 pir_state:0 temp:37]} {72816757 1767522060460 map[battery_percentage:51 co_value:70 pir_state:0 temp:33]} {72816757 1767522061514 map[battery_percentage:54 co_value:80 pir_state:0 temp:30]} {72816757 1767522062573 map[battery_percentage:51 co_value:70 pir_state:0 temp:37]} {72816757 1767522063643 map[battery_percentage:56 co_value:76 pir_state:0 temp:39]} {72816757 1767522064723 map[battery_percentage:57 co_value:75 pir_state:0 temp:32]}]
+2026-01-04T18:21:15.599+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522065785 map[battery_percentage:57 co_value:70 pir_state:0 temp:40]} {72816757 1767522066864 map[battery_percentage:56 co_value:78 pir_state:0 temp:33]} {72816757 1767522067922 map[battery_percentage:50 co_value:80 pir_state:0 temp:40]} {72816757 1767522068978 map[battery_percentage:58 co_value:70 pir_state:0 temp:39]} {72816757 1767522070045 map[battery_percentage:55 co_value:72 pir_state:0 temp:30]} {72816757 1767522071114 map[battery_percentage:57 co_value:70 pir_state:0 temp:39]} {72816757 1767522072164 map[battery_percentage:52 co_value:74 pir_state:0 temp:32]} {72816757 1767522073269 map[battery_percentage:51 co_value:73 pir_state:0 temp:31]} {72816757 1767522074362 map[battery_percentage:53 co_value:76 pir_state:0 temp:40]} {72816757 1767522075414 map[battery_percentage:50 co_value:76 pir_state:0 temp:35]}]
+2026-01-04T18:21:25.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522076465 map[battery_percentage:56 co_value:71 pir_state:0 temp:38]} {72816757 1767522077529 map[battery_percentage:60 co_value:80 pir_state:0 temp:30]} {72816757 1767522078583 map[battery_percentage:58 co_value:72 pir_state:0 temp:30]} {72816757 1767522079642 map[battery_percentage:54 co_value:74 pir_state:0 temp:40]} {72816757 1767522080696 map[battery_percentage:54 co_value:80 pir_state:0 temp:33]} {72816757 1767522081752 map[battery_percentage:54 co_value:70 pir_state:0 temp:34]} {72816757 1767522082805 map[battery_percentage:59 co_value:70 pir_state:0 temp:35]} {72816757 1767522083893 map[battery_percentage:59 co_value:74 pir_state:0 temp:31]} {72816757 1767522084947 map[battery_percentage:59 co_value:72 pir_state:0 temp:30]}]
+2026-01-04T18:21:35.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522086017 map[battery_percentage:56 co_value:77 pir_state:0 temp:31]} {72816757 1767522087066 map[battery_percentage:57 co_value:75 pir_state:0 temp:38]} {72816757 1767522088131 map[battery_percentage:58 co_value:80 pir_state:0 temp:38]} {72816757 1767522089193 map[battery_percentage:53 co_value:77 pir_state:0 temp:40]} {72816757 1767522090265 map[battery_percentage:59 co_value:74 pir_state:0 temp:35]} {72816757 1767522091335 map[battery_percentage:55 co_value:70 pir_state:0 temp:30]} {72816757 1767522092394 map[battery_percentage:60 co_value:76 pir_state:0 temp:37]} {72816757 1767522093443 map[battery_percentage:59 co_value:78 pir_state:0 temp:36]} {72816757 1767522094502 map[battery_percentage:57 co_value:71 pir_state:0 temp:36]}]
+2026-01-04T18:21:45.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522095571 map[battery_percentage:57 co_value:78 pir_state:0 temp:30]} {72816757 1767522096630 map[battery_percentage:59 co_value:76 pir_state:0 temp:39]} {72816757 1767522097702 map[battery_percentage:50 co_value:73 pir_state:0 temp:30]} {72816757 1767522098756 map[battery_percentage:57 co_value:75 pir_state:0 temp:33]} {72816757 1767522099868 map[battery_percentage:58 co_value:78 pir_state:0 temp:31]} {72816757 1767522100935 map[battery_percentage:51 co_value:80 pir_state:0 temp:40]} {72816757 1767522102100 map[battery_percentage:54 co_value:70 pir_state:0 temp:32]} {72816757 1767522103198 map[battery_percentage:59 co_value:77 pir_state:0 temp:35]} {72816757 1767522104263 map[battery_percentage:56 co_value:74 pir_state:0 temp:36]} {72816757 1767522105313 map[battery_percentage:50 co_value:77 pir_state:0 temp:32]}]
+2026-01-04T18:21:55.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522106373 map[battery_percentage:56 co_value:75 pir_state:0 temp:34]} {72816757 1767522107430 map[battery_percentage:60 co_value:72 pir_state:0 temp:36]} {72816757 1767522108488 map[battery_percentage:53 co_value:76 pir_state:0 temp:30]} {72816757 1767522109542 map[battery_percentage:54 co_value:78 pir_state:0 temp:36]} {72816757 1767522110611 map[battery_percentage:57 co_value:78 pir_state:0 temp:31]} {72816757 1767522111659 map[battery_percentage:60 co_value:78 pir_state:0 temp:34]} {72816757 1767522112717 map[battery_percentage:50 co_value:75 pir_state:0 temp:30]} {72816757 1767522113779 map[battery_percentage:60 co_value:72 pir_state:0 temp:40]} {72816757 1767522114881 map[battery_percentage:50 co_value:70 pir_state:0 temp:37]}]
+2026-01-04T18:22:05.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522115943 map[battery_percentage:60 co_value:80 pir_state:0 temp:30]} {72816757 1767522117005 map[battery_percentage:60 co_value:76 pir_state:0 temp:39]} {72816757 1767522118132 map[battery_percentage:51 co_value:77 pir_state:0 temp:36]} {72816757 1767522119207 map[battery_percentage:58 co_value:78 pir_state:0 temp:36]} {72816757 1767522120312 map[battery_percentage:55 co_value:77 pir_state:0 temp:36]} {72816757 1767522121374 map[battery_percentage:52 co_value:73 pir_state:0 temp:35]} {72816757 1767522122436 map[battery_percentage:52 co_value:71 pir_state:0 temp:34]} {72816757 1767522123513 map[battery_percentage:57 co_value:77 pir_state:0 temp:36]} {72816757 1767522124579 map[battery_percentage:54 co_value:74 pir_state:0 temp:40]}]
+2026-01-04T18:22:15.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522125632 map[battery_percentage:51 co_value:75 pir_state:0 temp:40]} {72816757 1767522126699 map[battery_percentage:59 co_value:76 pir_state:0 temp:38]} {72816757 1767522127750 map[battery_percentage:60 co_value:79 pir_state:0 temp:40]} {72816757 1767522128816 map[battery_percentage:57 co_value:70 pir_state:0 temp:36]} {72816757 1767522129872 map[battery_percentage:51 co_value:79 pir_state:0 temp:31]} {72816757 1767522130925 map[battery_percentage:56 co_value:74 pir_state:0 temp:40]} {72816757 1767522132000 map[battery_percentage:54 co_value:72 pir_state:0 temp:37]} {72816757 1767522133076 map[battery_percentage:55 co_value:80 pir_state:0 temp:40]} {72816757 1767522134134 map[battery_percentage:52 co_value:77 pir_state:0 temp:38]} {72816757 1767522135199 map[battery_percentage:58 co_value:73 pir_state:0 temp:35]}]
+2026-01-04T18:22:25.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522136248 map[battery_percentage:59 co_value:71 pir_state:0 temp:36]} {72816757 1767522137309 map[battery_percentage:51 co_value:79 pir_state:0 temp:32]} {72816757 1767522138385 map[battery_percentage:58 co_value:80 pir_state:0 temp:31]} {72816757 1767522139437 map[battery_percentage:59 co_value:71 pir_state:0 temp:31]} {72816757 1767522140498 map[battery_percentage:59 co_value:80 pir_state:0 temp:39]} {72816757 1767522141558 map[battery_percentage:52 co_value:70 pir_state:0 temp:32]} {72816757 1767522142613 map[battery_percentage:51 co_value:77 pir_state:0 temp:35]} {72816757 1767522143691 map[battery_percentage:56 co_value:78 pir_state:0 temp:34]} {72816757 1767522144760 map[battery_percentage:52 co_value:79 pir_state:0 temp:30]}]
+2026-01-04T18:22:35.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522145834 map[battery_percentage:53 co_value:78 pir_state:0 temp:34]} {72816757 1767522146886 map[battery_percentage:60 co_value:73 pir_state:0 temp:35]} {72816757 1767522147940 map[battery_percentage:56 co_value:70 pir_state:0 temp:38]} {72816757 1767522148996 map[battery_percentage:52 co_value:75 pir_state:0 temp:33]} {72816757 1767522150065 map[battery_percentage:59 co_value:72 pir_state:0 temp:39]} {72816757 1767522151116 map[battery_percentage:58 co_value:80 pir_state:0 temp:33]} {72816757 1767522152185 map[battery_percentage:52 co_value:75 pir_state:0 temp:37]} {72816757 1767522153238 map[battery_percentage:53 co_value:72 pir_state:0 temp:40]} {72816757 1767522154315 map[battery_percentage:51 co_value:75 pir_state:0 temp:33]} {72816757 1767522155404 map[battery_percentage:50 co_value:80 pir_state:0 temp:32]}]
+2026-01-04T18:22:45.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522156455 map[battery_percentage:55 co_value:75 pir_state:0 temp:37]} {72816757 1767522157544 map[battery_percentage:52 co_value:75 pir_state:0 temp:32]} {72816757 1767522158632 map[battery_percentage:52 co_value:73 pir_state:0 temp:33]} {72816757 1767522159694 map[battery_percentage:51 co_value:77 pir_state:0 temp:33]} {72816757 1767522160746 map[battery_percentage:50 co_value:75 pir_state:0 temp:38]} {72816757 1767522161936 map[battery_percentage:58 co_value:70 pir_state:0 temp:35]} {72816757 1767522163009 map[battery_percentage:52 co_value:73 pir_state:0 temp:32]} {72816757 1767522164090 map[battery_percentage:52 co_value:76 pir_state:0 temp:31]} {72816757 1767522165180 map[battery_percentage:58 co_value:74 pir_state:0 temp:40]}]
+2026-01-04T18:22:55.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522166273 map[battery_percentage:56 co_value:79 pir_state:0 temp:37]} {72816757 1767522167343 map[battery_percentage:56 co_value:77 pir_state:0 temp:39]} {72816757 1767522168410 map[battery_percentage:53 co_value:76 pir_state:0 temp:40]} {72816757 1767522169488 map[battery_percentage:53 co_value:70 pir_state:0 temp:40]} {72816757 1767522170543 map[battery_percentage:52 co_value:74 pir_state:0 temp:34]} {72816757 1767522171618 map[battery_percentage:50 co_value:77 pir_state:0 temp:40]} {72816757 1767522172676 map[battery_percentage:56 co_value:71 pir_state:0 temp:30]} {72816757 1767522173752 map[battery_percentage:60 co_value:70 pir_state:0 temp:36]} {72816757 1767522174813 map[battery_percentage:59 co_value:75 pir_state:0 temp:38]}]
+2026-01-04T18:23:05.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522175866 map[battery_percentage:52 co_value:80 pir_state:0 temp:36]} {72816757 1767522176917 map[battery_percentage:55 co_value:79 pir_state:0 temp:36]} {72816757 1767522177999 map[battery_percentage:56 co_value:76 pir_state:0 temp:31]} {72816757 1767522179076 map[battery_percentage:53 co_value:79 pir_state:0 temp:30]} {72816757 1767522180149 map[battery_percentage:55 co_value:73 pir_state:0 temp:36]} {72816757 1767522181212 map[battery_percentage:52 co_value:71 pir_state:0 temp:30]} {72816757 1767522182286 map[battery_percentage:51 co_value:70 pir_state:0 temp:37]} {72816757 1767522183338 map[battery_percentage:58 co_value:70 pir_state:0 temp:31]} {72816757 1767522184421 map[battery_percentage:59 co_value:73 pir_state:0 temp:39]} {72816757 1767522185494 map[battery_percentage:57 co_value:78 pir_state:0 temp:36]}]
+2026-01-04T18:23:15.598+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522186552 map[battery_percentage:54 co_value:73 pir_state:0 temp:40]} {72816757 1767522187623 map[battery_percentage:57 co_value:75 pir_state:0 temp:37]} {72816757 1767522188682 map[battery_percentage:59 co_value:74 pir_state:0 temp:35]} {72816757 1767522189856 map[battery_percentage:53 co_value:71 pir_state:0 temp:34]} {72816757 1767522190975 map[battery_percentage:58 co_value:80 pir_state:0 temp:36]} {72816757 1767522192036 map[battery_percentage:52 co_value:73 pir_state:0 temp:36]} {72816757 1767522193113 map[battery_percentage:52 co_value:79 pir_state:0 temp:31]} {72816757 1767522194193 map[battery_percentage:52 co_value:77 pir_state:0 temp:36]} {72816757 1767522195256 map[battery_percentage:53 co_value:72 pir_state:0 temp:40]}]
+2026-01-04T18:23:25.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522196357 map[battery_percentage:50 co_value:74 pir_state:0 temp:40]} {72816757 1767522197416 map[battery_percentage:51 co_value:79 pir_state:0 temp:38]} {72816757 1767522198473 map[battery_percentage:57 co_value:74 pir_state:0 temp:34]} {72816757 1767522199525 map[battery_percentage:54 co_value:70 pir_state:0 temp:30]} {72816757 1767522200590 map[battery_percentage:51 co_value:72 pir_state:0 temp:34]} {72816757 1767522201658 map[battery_percentage:60 co_value:73 pir_state:0 temp:32]} {72816757 1767522202710 map[battery_percentage:52 co_value:74 pir_state:0 temp:31]} {72816757 1767522203777 map[battery_percentage:54 co_value:78 pir_state:0 temp:39]} {72816757 1767522204846 map[battery_percentage:54 co_value:79 pir_state:0 temp:38]}]
+2026-01-04T18:23:35.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522205899 map[battery_percentage:57 co_value:75 pir_state:0 temp:40]} {72816757 1767522206955 map[battery_percentage:50 co_value:75 pir_state:0 temp:35]} {72816757 1767522208127 map[battery_percentage:60 co_value:78 pir_state:0 temp:31]} {72816757 1767522209208 map[battery_percentage:50 co_value:77 pir_state:0 temp:40]} {72816757 1767522210305 map[battery_percentage:58 co_value:70 pir_state:0 temp:32]} {72816757 1767522211410 map[battery_percentage:60 co_value:80 pir_state:0 temp:38]} {72816757 1767522212479 map[battery_percentage:54 co_value:74 pir_state:0 temp:39]} {72816757 1767522213537 map[battery_percentage:56 co_value:71 pir_state:0 temp:37]} {72816757 1767522214593 map[battery_percentage:58 co_value:71 pir_state:0 temp:35]}]
+2026-01-04T18:23:45.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522215662 map[battery_percentage:51 co_value:76 pir_state:0 temp:37]} {72816757 1767522216711 map[battery_percentage:56 co_value:74 pir_state:0 temp:34]} {72816757 1767522217773 map[battery_percentage:55 co_value:79 pir_state:0 temp:31]} {72816757 1767522218856 map[battery_percentage:60 co_value:77 pir_state:0 temp:36]} {72816757 1767522219915 map[battery_percentage:50 co_value:78 pir_state:0 temp:37]} {72816757 1767522220981 map[battery_percentage:60 co_value:78 pir_state:0 temp:30]} {72816757 1767522222076 map[battery_percentage:51 co_value:71 pir_state:0 temp:33]} {72816757 1767522223163 map[battery_percentage:53 co_value:78 pir_state:0 temp:33]} {72816757 1767522224220 map[battery_percentage:60 co_value:72 pir_state:0 temp:39]} {72816757 1767522225286 map[battery_percentage:58 co_value:73 pir_state:0 temp:35]}]
+2026-01-04T18:23:55.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522226346 map[battery_percentage:58 co_value:72 pir_state:0 temp:30]} {72816757 1767522227406 map[battery_percentage:52 co_value:77 pir_state:0 temp:34]} {72816757 1767522228463 map[battery_percentage:56 co_value:70 pir_state:0 temp:34]} {72816757 1767522229533 map[battery_percentage:57 co_value:70 pir_state:0 temp:34]} {72816757 1767522230591 map[battery_percentage:59 co_value:70 pir_state:0 temp:37]} {72816757 1767522231647 map[battery_percentage:52 co_value:73 pir_state:0 temp:39]} {72816757 1767522232694 map[battery_percentage:57 co_value:78 pir_state:0 temp:34]} {72816757 1767522233743 map[battery_percentage:51 co_value:79 pir_state:0 temp:39]} {72816757 1767522234807 map[battery_percentage:51 co_value:77 pir_state:0 temp:34]}]
+2026-01-04T18:24:05.596+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522235860 map[battery_percentage:56 co_value:80 pir_state:0 temp:34]} {72816757 1767522236918 map[battery_percentage:55 co_value:75 pir_state:0 temp:30]} {72816757 1767522237975 map[battery_percentage:58 co_value:75 pir_state:0 temp:30]} {72816757 1767522239034 map[battery_percentage:57 co_value:76 pir_state:0 temp:31]} {72816757 1767522240092 map[battery_percentage:52 co_value:80 pir_state:0 temp:33]} {72816757 1767522241155 map[battery_percentage:58 co_value:73 pir_state:0 temp:35]} {72816757 1767522242211 map[battery_percentage:50 co_value:71 pir_state:0 temp:39]} {72816757 1767522243290 map[battery_percentage:59 co_value:76 pir_state:0 temp:35]} {72816757 1767522244368 map[battery_percentage:53 co_value:79 pir_state:0 temp:32]}]
+2026-01-04T18:24:15.596+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522245454 map[battery_percentage:53 co_value:73 pir_state:0 temp:32]} {72816757 1767522246655 map[battery_percentage:52 co_value:80 pir_state:0 temp:32]} {72816757 1767522247766 map[battery_percentage:57 co_value:73 pir_state:0 temp:37]} {72816757 1767522248845 map[battery_percentage:58 co_value:80 pir_state:0 temp:31]} {72816757 1767522249920 map[battery_percentage:58 co_value:75 pir_state:0 temp:40]} {72816757 1767522250986 map[battery_percentage:53 co_value:77 pir_state:0 temp:32]} {72816757 1767522252061 map[battery_percentage:59 co_value:75 pir_state:0 temp:34]} {72816757 1767522253150 map[battery_percentage:50 co_value:78 pir_state:0 temp:31]} {72816757 1767522254204 map[battery_percentage:57 co_value:76 pir_state:0 temp:34]} {72816757 1767522255270 map[battery_percentage:57 co_value:74 pir_state:0 temp:36]}]
+2026-01-04T18:24:25.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522256336 map[battery_percentage:56 co_value:76 pir_state:0 temp:35]} {72816757 1767522257525 map[battery_percentage:56 co_value:74 pir_state:0 temp:37]} {72816757 1767522258595 map[battery_percentage:53 co_value:76 pir_state:0 temp:36]} {72816757 1767522259684 map[battery_percentage:57 co_value:80 pir_state:0 temp:31]} {72816757 1767522260755 map[battery_percentage:57 co_value:74 pir_state:0 temp:33]} {72816757 1767522261823 map[battery_percentage:59 co_value:75 pir_state:0 temp:40]} {72816757 1767522262897 map[battery_percentage:59 co_value:71 pir_state:0 temp:34]} {72816757 1767522263959 map[battery_percentage:56 co_value:78 pir_state:0 temp:35]} {72816757 1767522265026 map[battery_percentage:50 co_value:71 pir_state:0 temp:37]}]
+2026-01-04T18:24:35.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522266079 map[battery_percentage:60 co_value:71 pir_state:0 temp:32]} {72816757 1767522267137 map[battery_percentage:58 co_value:74 pir_state:0 temp:38]} {72816757 1767522268242 map[battery_percentage:60 co_value:75 pir_state:0 temp:33]} {72816757 1767522269330 map[battery_percentage:54 co_value:76 pir_state:0 temp:30]} {72816757 1767522270390 map[battery_percentage:50 co_value:72 pir_state:0 temp:32]} {72816757 1767522271448 map[battery_percentage:54 co_value:75 pir_state:0 temp:37]} {72816757 1767522272511 map[battery_percentage:56 co_value:73 pir_state:0 temp:32]} {72816757 1767522273565 map[battery_percentage:53 co_value:70 pir_state:0 temp:38]} {72816757 1767522274622 map[battery_percentage:55 co_value:77 pir_state:0 temp:39]}]
+2026-01-04T18:24:45.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522275697 map[battery_percentage:59 co_value:80 pir_state:0 temp:38]} {72816757 1767522276746 map[battery_percentage:53 co_value:77 pir_state:0 temp:34]} {72816757 1767522277873 map[battery_percentage:59 co_value:78 pir_state:0 temp:34]} {72816757 1767522278956 map[battery_percentage:58 co_value:80 pir_state:0 temp:38]} {72816757 1767522280034 map[battery_percentage:59 co_value:73 pir_state:0 temp:36]} {72816757 1767522281167 map[battery_percentage:53 co_value:80 pir_state:0 temp:34]} {72816757 1767522282240 map[battery_percentage:57 co_value:80 pir_state:0 temp:38]} {72816757 1767522283299 map[battery_percentage:51 co_value:76 pir_state:0 temp:34]} {72816757 1767522284365 map[battery_percentage:50 co_value:76 pir_state:0 temp:36]} {72816757 1767522285458 map[battery_percentage:55 co_value:78 pir_state:0 temp:40]}]
+2026-01-04T18:24:55.596+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522286520 map[battery_percentage:57 co_value:71 pir_state:0 temp:39]} {72816757 1767522287582 map[battery_percentage:54 co_value:79 pir_state:0 temp:33]} {72816757 1767522288657 map[battery_percentage:51 co_value:79 pir_state:0 temp:30]} {72816757 1767522289745 map[battery_percentage:57 co_value:75 pir_state:0 temp:30]} {72816757 1767522290935 map[battery_percentage:53 co_value:76 pir_state:0 temp:40]} {72816757 1767522292003 map[battery_percentage:55 co_value:74 pir_state:0 temp:30]} {72816757 1767522293064 map[battery_percentage:55 co_value:73 pir_state:0 temp:30]} {72816757 1767522294159 map[battery_percentage:50 co_value:75 pir_state:0 temp:32]} {72816757 1767522295248 map[battery_percentage:57 co_value:70 pir_state:0 temp:34]}]
+2026-01-04T18:25:05.597+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522296308 map[battery_percentage:50 co_value:71 pir_state:0 temp:34]} {72816757 1767522297411 map[battery_percentage:53 co_value:73 pir_state:0 temp:38]} {72816757 1767522298465 map[battery_percentage:59 co_value:76 pir_state:0 temp:40]} {72816757 1767522299517 map[battery_percentage:56 co_value:70 pir_state:0 temp:40]} {72816757 1767522300591 map[battery_percentage:59 co_value:73 pir_state:0 temp:35]} {72816757 1767522301680 map[battery_percentage:55 co_value:74 pir_state:0 temp:39]} {72816757 1767522302748 map[battery_percentage:57 co_value:74 pir_state:0 temp:37]} {72816757 1767522303810 map[battery_percentage:51 co_value:71 pir_state:0 temp:30]} {72816757 1767522304910 map[battery_percentage:55 co_value:76 pir_state:0 temp:38]}]
+2026-01-04T18:25:10.617+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T18:25:11.618+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767522305994 map[battery_percentage:57 co_value:77 pir_state:0 temp:31]} {72816757 1767522307072 map[battery_percentage:54 co_value:76 pir_state:0 temp:32]} {72816757 1767522308140 map[battery_percentage:51 co_value:71 pir_state:0 temp:38]} {72816757 1767522309194 map[battery_percentage:51 co_value:75 pir_state:0 temp:33]} {72816757 1767522310307 map[battery_percentage:57 co_value:71 pir_state:0 temp:35]} {72816757 1767522311362 map[battery_percentage:53 co_value:80 pir_state:0 temp:30]}]
+2026-01-04T18:25:12.349+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T18:25:12.349+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T18:25:12.349+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:01:21.566+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:01:23.868+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:01:23.869+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:01:23.870+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:01:46.484+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:01:47.748+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:01:47.749+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:01:47.749+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:01:51.900+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:01:54.179+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:01:54.180+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:01:54.180+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:02:11.357+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{37159496 1767524521281 map[temp:33]}]
+2026-01-04T19:04:51.929+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:04:53.333+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:04:53.334+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:04:53.334+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:04:58.566+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:05:00.904+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:05:00.905+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:05:00.905+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:05:20.840+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524710729 map[battery_percentage:60 co_value:73 pir_state:0 temp:39]}]
+2026-01-04T19:05:30.840+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524722840 map[battery_percentage:56 co_value:72 pir_state:0 temp:32]}]
+2026-01-04T19:05:40.839+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524734909 map[battery_percentage:57 co_value:76 pir_state:0 temp:30]}]
+2026-01-04T19:05:50.839+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524746978 map[battery_percentage:51 co_value:79 pir_state:0 temp:39]}]
+2026-01-04T19:06:00.840+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524759040 map[battery_percentage:60 co_value:73 pir_state:0 temp:40]}]
+2026-01-04T19:06:13.635+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:06:14.637+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524771099 map[battery_percentage:59 co_value:75 pir_state:0 temp:31]}]
+2026-01-04T19:06:15.105+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:06:15.106+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:06:15.106+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:06:21.640+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:06:24.078+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:06:24.078+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:06:24.078+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:06:43.950+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524793805 map[temp:30]}]
+2026-01-04T19:06:53.950+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524805950 map[temp:30]}]
+2026-01-04T19:07:03.949+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524818026 map[temp:37]}]
+2026-01-04T19:07:13.950+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524830112 map[temp:33]}]
+2026-01-04T19:07:18.098+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:07:19.443+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:07:19.444+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:07:19.444+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:08:01.089+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:08:03.394+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:08:03.394+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:08:03.394+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:08:23.316+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767524893236 map[temp:38]}]
+2026-01-04T19:08:23.626+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:08:24.976+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:08:24.977+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:08:24.977+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:08:28.923+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:08:31.263+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:08:31.264+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:08:31.264+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:09:18.083+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{37159496 1767524948003 map[temp:33]}]
+2026-01-04T19:11:28.352+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767525078273 map[temp:34]}]
+2026-01-04T19:12:07.162+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:12:08.577+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:12:08.578+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:12:08.578+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:12:22.104+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:12:24.426+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:12:24.426+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:12:24.427+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:12:55.766+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767525165653 map[temp:34]}]
+2026-01-04T19:14:48.154+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:14:49.629+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:14:49.630+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:14:49.630+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:14:54.169+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:14:56.325+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:14:56.325+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:14:56.325+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:15:15.403+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767525305332 map[temp:52]}]
+2026-01-04T19:34:30.655+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526460481 map[temp:54]}]
+2026-01-04T19:35:05.998+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:35:07.254+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:35:07.257+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:35:07.257+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:35:11.718+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:35:13.863+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:35:13.863+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:35:13.863+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:35:32.932+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526522861 map[temp:55]}]
+2026-01-04T19:36:17.337+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:36:18.625+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:36:18.626+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:36:18.626+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:36:22.551+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:36:24.676+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:36:24.676+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:36:24.676+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:36:48.514+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526598451 map[temp:55]}]
+2026-01-04T19:37:00.834+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:37:02.208+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:37:02.209+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:37:02.209+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:37:07.020+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:37:09.199+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:37:09.200+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:37:09.200+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:38:31.536+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:38:33.058+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:38:33.064+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:38:33.064+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:38:37.430+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:38:39.588+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:38:39.588+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:38:39.588+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:38:59.799+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526729713 map[temp:55]}]
+2026-01-04T19:39:07.228+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:39:08.522+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:39:08.523+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:39:08.523+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:39:12.726+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:39:14.865+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:39:14.865+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:39:14.865+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:39:38.921+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526768824 map[temp:55]}]
+2026-01-04T19:39:50.941+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:39:52.275+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:39:52.276+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:39:52.276+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:39:56.665+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:39:58.813+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:39:58.813+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:39:58.813+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:40:22.738+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526812674 map[temp:55]}]
+2026-01-04T19:40:32.738+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526822906 map[temp:55]} {72816757 1767526823231 map[temp:55]} {72816757 1767526823527 map[temp:55]} {72816757 1767526823829 map[temp:55]}]
+2026-01-04T19:41:15.283+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:41:16.567+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:41:16.567+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:41:16.567+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:41:30.425+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:41:32.593+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:41:32.594+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:41:32.594+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:41:58.091+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526908032 map[temp:55]} {72816757 1767526912722 map[temp:55]}]
+2026-01-04T19:42:08.091+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526919252 map[temp:55]} {72816757 1767526919608 map[temp:55]} {72816757 1767526919907 map[temp:55]} {72816757 1767526920445 map[temp:55]} {72816757 1767526920766 map[temp:55]} {72816757 1767526921100 map[temp:55]}]
+2026-01-04T19:43:08.090+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767526984939 map[temp:55]} {72816757 1767526985254 map[temp:55]} {72816757 1767526985506 map[temp:55]} {72816757 1767526985705 map[temp:55]}]
+2026-01-04T19:43:28.090+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527005638 map[temp:56]}]
+2026-01-04T19:43:48.089+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527019470 map[temp:56]} {72816757 1767527027012 map[temp:56]} {72816757 1767527027263 map[temp:56]} {72816757 1767527027519 map[temp:56]} {72816757 1767527027761 map[temp:56]}]
+2026-01-04T19:43:58.090+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527028139 map[temp:56]} {72816757 1767527028467 map[temp:56]} {72816757 1767527028665 map[temp:56]} {72816757 1767527029023 map[temp:56]}]
+2026-01-04T19:46:52.349+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527202261 map[temp:57]}]
+2026-01-04T19:47:23.452+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:47:24.726+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:47:24.727+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:47:24.727+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:47:39.391+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:47:41.653+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:47:41.654+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:47:41.654+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:48:23.713+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527293611 map[temp:57]}]
+2026-01-04T19:48:33.713+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527309687 map[temp:58]} {72816757 1767527312152 map[temp:59]}]
+2026-01-04T19:48:43.713+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527321203 map[temp:59]} {72816757 1767527321500 map[temp:59]} {72816757 1767527321778 map[temp:59]} {72816757 1767527322089 map[temp:59]} {72816757 1767527322441 map[temp:59]} {72816757 1767527322731 map[temp:59]}]
+2026-01-04T19:49:03.713+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527338187 map[temp:59]}]
+2026-01-04T19:52:54.915+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:52:56.407+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:52:56.407+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:52:56.407+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:53:00.700+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:53:02.994+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:53:02.994+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:53:02.994+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:53:11.931+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527581847 map[temp:35]} {72816757 1767527582930 map[temp:40]} {72816757 1767527584028 map[temp:31]} {72816757 1767527585122 map[temp:34]} {72816757 1767527586211 map[temp:33]} {72816757 1767527587301 map[temp:34]} {72816757 1767527588389 map[temp:40]} {72816757 1767527589484 map[temp:30]} {72816757 1767527590592 map[temp:32]} {72816757 1767527591715 map[temp:35]}]
+2026-01-04T19:53:21.933+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527592811 map[temp:40]} {72816757 1767527593888 map[temp:32]} {72816757 1767527595003 map[temp:33]} {72816757 1767527596093 map[temp:31]} {72816757 1767527597172 map[temp:39]} {72816757 1767527598270 map[temp:40]} {72816757 1767527599367 map[temp:39]} {72816757 1767527600449 map[temp:37]} {72816757 1767527601531 map[temp:30]}]
+2026-01-04T19:53:31.931+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527602617 map[temp:33]} {72816757 1767527603702 map[temp:37]} {72816757 1767527604785 map[temp:40]} {72816757 1767527605891 map[temp:38]} {72816757 1767527606975 map[temp:32]} {72816757 1767527608073 map[temp:39]} {72816757 1767527609156 map[temp:35]} {72816757 1767527610302 map[temp:39]} {72816757 1767527611424 map[temp:30]}]
+2026-01-04T19:53:41.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527612523 map[temp:40]} {72816757 1767527613635 map[temp:37]} {72816757 1767527614748 map[temp:37]} {72816757 1767527615843 map[temp:39]} {72816757 1767527616926 map[temp:40]} {72816757 1767527618038 map[temp:34]} {72816757 1767527619130 map[temp:39]} {72816757 1767527620318 map[temp:35]} {72816757 1767527621444 map[temp:31]}]
+2026-01-04T19:53:51.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527622558 map[temp:32]} {72816757 1767527623665 map[temp:34]} {72816757 1767527624762 map[temp:31]} {72816757 1767527625858 map[temp:31]} {72816757 1767527626938 map[temp:38]} {72816757 1767527628023 map[temp:35]} {72816757 1767527629103 map[temp:32]} {72816757 1767527630179 map[temp:34]} {72816757 1767527631278 map[temp:40]}]
+2026-01-04T19:54:01.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527632358 map[temp:31]} {72816757 1767527633451 map[temp:37]} {72816757 1767527634529 map[temp:40]} {72816757 1767527635611 map[temp:38]} {72816757 1767527636692 map[temp:34]} {72816757 1767527637797 map[temp:31]} {72816757 1767527638879 map[temp:32]} {72816757 1767527639966 map[temp:31]} {72816757 1767527641046 map[temp:31]}]
+2026-01-04T19:54:11.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527642127 map[temp:31]} {72816757 1767527643253 map[temp:32]} {72816757 1767527644334 map[temp:33]} {72816757 1767527645461 map[temp:39]} {72816757 1767527646543 map[temp:34]} {72816757 1767527647637 map[temp:34]} {72816757 1767527648750 map[temp:34]} {72816757 1767527649840 map[temp:35]} {72816757 1767527650929 map[temp:40]}]
+2026-01-04T19:54:21.931+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527652021 map[temp:35]} {72816757 1767527653114 map[temp:38]} {72816757 1767527654195 map[temp:39]} {72816757 1767527655277 map[temp:39]} {72816757 1767527656368 map[temp:37]} {72816757 1767527657459 map[temp:38]} {72816757 1767527658537 map[temp:37]} {72816757 1767527659615 map[temp:31]} {72816757 1767527660699 map[temp:35]} {72816757 1767527661780 map[temp:31]}]
+2026-01-04T19:54:31.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527662901 map[temp:36]} {72816757 1767527663984 map[temp:36]} {72816757 1767527665069 map[temp:33]} {72816757 1767527666184 map[temp:30]} {72816757 1767527667272 map[temp:39]} {72816757 1767527668356 map[temp:32]} {72816757 1767527669580 map[temp:37]} {72816757 1767527670686 map[temp:32]} {72816757 1767527671764 map[temp:30]}]
+2026-01-04T19:54:41.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527672846 map[temp:35]} {72816757 1767527673947 map[temp:32]} {72816757 1767527675026 map[temp:38]} {72816757 1767527676122 map[temp:40]} {72816757 1767527677221 map[temp:39]} {72816757 1767527678295 map[temp:32]} {72816757 1767527679394 map[temp:35]} {72816757 1767527680482 map[temp:32]} {72816757 1767527681577 map[temp:38]}]
+2026-01-04T19:54:51.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527682659 map[temp:40]} {72816757 1767527683746 map[temp:38]} {72816757 1767527684860 map[temp:31]} {72816757 1767527685963 map[temp:37]} {72816757 1767527687094 map[temp:37]} {72816757 1767527688204 map[temp:32]} {72816757 1767527689323 map[temp:35]} {72816757 1767527690404 map[temp:32]} {72816757 1767527691485 map[temp:39]}]
+2026-01-04T19:55:01.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527692571 map[temp:31]} {72816757 1767527693742 map[temp:33]} {72816757 1767527694862 map[temp:35]} {72816757 1767527695976 map[temp:35]} {72816757 1767527697097 map[temp:30]} {72816757 1767527698174 map[temp:32]} {72816757 1767527699272 map[temp:31]} {72816757 1767527700385 map[temp:37]} {72816757 1767527701494 map[temp:33]}]
+2026-01-04T19:55:11.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527702574 map[temp:34]} {72816757 1767527703659 map[temp:33]} {72816757 1767527704766 map[temp:33]} {72816757 1767527705853 map[temp:31]} {72816757 1767527706952 map[temp:30]} {72816757 1767527708033 map[temp:39]} {72816757 1767527709177 map[temp:37]} {72816757 1767527710306 map[temp:37]} {72816757 1767527711393 map[temp:40]}]
+2026-01-04T19:55:21.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527712599 map[temp:35]} {72816757 1767527713719 map[temp:31]} {72816757 1767527714812 map[temp:39]} {72816757 1767527715899 map[temp:36]} {72816757 1767527716997 map[temp:31]} {72816757 1767527718138 map[temp:40]} {72816757 1767527719259 map[temp:36]} {72816757 1767527720381 map[temp:31]} {72816757 1767527721496 map[temp:39]}]
+2026-01-04T19:55:31.930+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527722605 map[temp:34]} {72816757 1767527723711 map[temp:39]} {72816757 1767527724798 map[temp:33]} {72816757 1767527725884 map[temp:40]} {72816757 1767527726991 map[temp:35]} {72816757 1767527728086 map[temp:40]} {72816757 1767527729176 map[temp:40]} {72816757 1767527730300 map[temp:31]} {72816757 1767527731515 map[temp:31]}]
+2026-01-04T19:55:41.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527732683 map[temp:34]} {72816757 1767527733784 map[temp:32]} {72816757 1767527734909 map[temp:36]} {72816757 1767527736014 map[temp:40]} {72816757 1767527737123 map[temp:36]} {72816757 1767527738221 map[temp:40]} {72816757 1767527739317 map[temp:39]} {72816757 1767527740404 map[temp:31]} {72816757 1767527741502 map[temp:36]}]
+2026-01-04T19:55:51.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527742628 map[temp:40]} {72816757 1767527743705 map[temp:33]} {72816757 1767527744801 map[temp:36]} {72816757 1767527745886 map[temp:33]} {72816757 1767527746967 map[temp:33]} {72816757 1767527748060 map[temp:39]} {72816757 1767527749143 map[temp:39]} {72816757 1767527750235 map[temp:31]} {72816757 1767527751317 map[temp:40]}]
+2026-01-04T19:56:01.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527752406 map[temp:39]} {72816757 1767527753494 map[temp:31]} {72816757 1767527754571 map[temp:37]} {72816757 1767527755647 map[temp:32]} {72816757 1767527756734 map[temp:35]} {72816757 1767527757817 map[temp:35]} {72816757 1767527758918 map[temp:34]} {72816757 1767527760020 map[temp:37]} {72816757 1767527761272 map[temp:30]}]
+2026-01-04T19:56:11.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527762379 map[temp:31]} {72816757 1767527763516 map[temp:37]} {72816757 1767527764675 map[temp:30]} {72816757 1767527765836 map[temp:36]} {72816757 1767527766934 map[temp:31]} {72816757 1767527768056 map[temp:38]} {72816757 1767527769180 map[temp:35]} {72816757 1767527770285 map[temp:32]} {72816757 1767527771412 map[temp:30]}]
+2026-01-04T19:56:21.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527772562 map[temp:36]} {72816757 1767527773696 map[temp:36]} {72816757 1767527774870 map[temp:34]} {72816757 1767527775986 map[temp:33]} {72816757 1767527777086 map[temp:38]} {72816757 1767527778172 map[temp:37]} {72816757 1767527779254 map[temp:31]} {72816757 1767527780344 map[temp:30]} {72816757 1767527781431 map[temp:34]}]
+2026-01-04T19:56:31.928+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527782508 map[temp:38]} {72816757 1767527783597 map[temp:30]} {72816757 1767527784681 map[temp:37]} {72816757 1767527785787 map[temp:39]} {72816757 1767527786874 map[temp:33]} {72816757 1767527787974 map[temp:33]} {72816757 1767527789063 map[temp:34]} {72816757 1767527790151 map[temp:35]} {72816757 1767527791249 map[temp:30]}]
+2026-01-04T19:56:41.929+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527792332 map[temp:38]} {72816757 1767527793410 map[temp:33]} {72816757 1767527794498 map[temp:30]} {72816757 1767527795575 map[temp:34]} {72816757 1767527796656 map[temp:30]} {72816757 1767527797760 map[temp:37]} {72816757 1767527798834 map[temp:36]} {72816757 1767527799920 map[temp:32]} {72816757 1767527801005 map[temp:35]}]
+2026-01-04T19:56:46.240+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:56:47.242+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527802096 map[temp:39]} {72816757 1767527803201 map[temp:34]} {72816757 1767527804284 map[temp:35]} {72816757 1767527805366 map[temp:37]} {72816757 1767527806462 map[temp:40]}]
+2026-01-04T19:56:47.862+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:56:47.863+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:56:47.863+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:56:57.261+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:56:59.566+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:56:59.566+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:56:59.567+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:57:29.416+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527839338 map[temp:36]} {72816757 1767527839619 map[temp:32]} {72816757 1767527839910 map[temp:39]} {72816757 1767527840210 map[temp:35]} {72816757 1767527840521 map[temp:30]} {72816757 1767527840820 map[temp:40]} {72816757 1767527841138 map[temp:36]} {72816757 1767527841447 map[temp:40]} {72816757 1767527841744 map[temp:36]} {72816757 1767527842057 map[temp:34]}]
+2026-01-04T19:57:49.415+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527862620 map[temp:33]} {72816757 1767527862908 map[temp:37]} {72816757 1767527863208 map[temp:38]} {72816757 1767527863506 map[temp:30]} {72816757 1767527863804 map[temp:36]} {72816757 1767527864146 map[temp:39]} {72816757 1767527864467 map[temp:40]} {72816757 1767527864772 map[temp:38]} {72816757 1767527865089 map[temp:33]} {72816757 1767527865419 map[temp:34]} {72816757 1767527865752 map[temp:32]}]
+2026-01-04T19:58:32.458+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T19:58:34.603+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T19:58:34.604+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T19:58:34.604+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T19:58:39.550+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T19:58:41.846+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T19:58:41.847+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T19:58:41.847+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T19:59:13.415+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767527943338 map[temp:34]} {72816757 1767527943681 map[temp:34]} {72816757 1767527943970 map[temp:33]} {72816757 1767527944273 map[temp:37]} {72816757 1767527944575 map[temp:35]}]
+2026-01-04T20:01:31.600+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528081514 map[temp:36]} {72816757 1767528081793 map[temp:35]} {72816757 1767528082094 map[temp:35]} {72816757 1767528082413 map[temp:33]} {72816757 1767528082753 map[temp:33]} {72816757 1767528083225 map[temp:31]} {72816757 1767528083566 map[temp:39]}]
+2026-01-04T20:03:11.904+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:03:13.324+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:03:13.326+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:03:13.326+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:03:21.921+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:03:24.275+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:03:24.276+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:03:24.276+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:03:55.853+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528225788 map[temp:59]} {72816757 1767528226128 map[temp:59]} {72816757 1767528226485 map[temp:59]} {72816757 1767528226820 map[temp:59]} {72816757 1767528227147 map[temp:59]} {72816757 1767528227451 map[temp:59]}]
+2026-01-04T20:05:13.839+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:05:15.156+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:05:15.157+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:05:15.157+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:05:20.310+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:05:22.649+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:05:22.650+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:05:22.650+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:05:50.716+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528340647 map[temp:31]}]
+2026-01-04T20:06:30.716+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528390383 map[temp:32]}]
+2026-01-04T20:06:40.716+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528394365 map[temp:33]}]
+2026-01-04T20:07:55.176+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:07:56.534+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:07:56.535+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:07:56.535+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:08:00.777+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:08:03.090+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:08:03.091+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:08:03.091+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:08:25.039+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528494972 map[temp:1]} {72816757 1767528495308 map[temp:1]} {72816757 1767528495611 map[temp:1]} {72816757 1767528496120 map[temp:1]} {72816757 1767528496437 map[temp:1]}]
+2026-01-04T20:09:54.200+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:09:55.533+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:09:55.533+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:09:55.533+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:09:59.797+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:10:02.211+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:10:02.212+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:10:02.212+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:10:18.427+0800 [31mERROR[0m server/mqtt_handler.go:341 device online err:invalid connection
+2026-01-04T20:10:21.660+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:10:23.437+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:10:23.439+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:10:23.440+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:10:27.796+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:10:30.097+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:10:30.097+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:10:30.097+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:10:42.808+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528632734 map[temp:33.2]} {72816757 1767528632979 map[temp:33.2]} {72816757 1767528633318 map[temp:33.2]} {72816757 1767528633665 map[temp:33.2]}]
+2026-01-04T20:11:42.807+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528694698 map[temp:33.2]} {72816757 1767528695067 map[temp:33.2]} {72816757 1767528695417 map[temp:33.2]} {72816757 1767528695766 map[temp:33.2]} {72816757 1767528696102 map[temp:33.2]} {72816757 1767528702268 map[temp:33.2]}]
+2026-01-04T20:13:32.806+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528810512 map[co_value:20 temp:10]}]
+2026-01-04T20:14:55.879+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:14:57.224+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:14:57.225+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:14:57.225+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:15:01.433+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:15:03.718+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:15:03.719+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:15:03.719+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:15:25.064+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767528914900 map[co_value:20 temp:10]}]
+2026-01-04T20:16:40.103+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:16:41.310+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:16:41.319+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:16:41.319+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:16:45.485+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:16:47.814+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:16:47.814+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:16:47.814+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:17:20.364+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529030295 map[co_value:20 temp:10]}]
+2026-01-04T20:18:40.363+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529106233 map[co_value:30 temp:20]}]
+2026-01-04T20:19:53.377+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:19:54.816+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:19:54.817+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:19:54.817+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:19:59.490+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:20:01.799+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:20:01.799+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:20:01.799+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:20:28.786+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529218691 map[co_value:20 temp:10]}]
+2026-01-04T20:21:49.814+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:21:51.396+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:21:51.396+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:21:51.396+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:22:00.609+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:22:02.901+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:22:02.902+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:22:02.902+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:22:24.168+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529106233 map[co_value:35 temp:25]}]
+2026-01-04T20:22:44.168+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529353985 map[co_value:35 temp:25]}]
+2026-01-04T20:23:44.168+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529353985 map[co_value:35 temp:25]}]
+2026-01-04T20:23:54.169+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]}]
+2026-01-04T20:24:04.169+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]} {72816757 1767529353985 map[co_value:35 temp:25]}]
+2026-01-04T20:24:34.168+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529471340 map[co_value:35 temp:25]} {72816757 1767529471529 map[co_value:35 temp:25]} {72816757 1767529471877 map[co_value:35 temp:25]} {72816757 1767529472250 map[co_value:35 temp:25]} {72816757 1767529472602 map[co_value:35 temp:25]}]
+2026-01-04T20:24:54.168+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529491580 map[co_value:35 temp:25]} {72816757 1767529491885 map[co_value:35 temp:25]} {72816757 1767529492219 map[co_value:35 temp:25]}]
+2026-01-04T20:28:50.129+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:28:51.512+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:28:51.514+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:28:51.514+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:28:55.640+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:28:57.967+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:28:57.967+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:28:57.967+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:29:32.552+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529762464 map[co_value:20 temp:10]} {72816757 1767529763006 map[co_value:20 temp:10]} {72816757 1767529763310 map[co_value:20 temp:10]}]
+2026-01-04T20:30:12.551+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529810602 map[co_value:20 temp:10]} {72816757 1767529810773 map[co_value:20 temp:10]} {72816757 1767529811134 map[co_value:20 temp:10]} {72816757 1767529811473 map[co_value:20 temp:10]} {72816757 1767529811811 map[co_value:20 temp:10]} {72816757 1767529812178 map[co_value:20 temp:10]}]
+2026-01-04T20:30:22.552+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529812546 map[co_value:20 temp:10]} {72816757 1767529812901 map[co_value:20 temp:10]} {72816757 1767529813268 map[co_value:20 temp:10]} {72816757 1767529813632 map[co_value:20 temp:10]} {72816757 1767529814005 map[co_value:20 temp:10]} {72816757 1767529814375 map[co_value:20 temp:10]} {72816757 1767529814747 map[co_value:20 temp:10]}]
+2026-01-04T20:31:10.342+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:31:11.658+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:31:11.659+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:31:11.659+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:31:16.125+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:31:18.466+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:31:18.466+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:31:18.466+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:31:44.925+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529894860 map[co_value:35 temp:25]} {72816757 1767529895168 map[co_value:35 temp:25]} {72816757 1767529895461 map[co_value:35 temp:25]} {72816757 1767529895773 map[co_value:35 temp:25]} {72816757 1767529896093 map[co_value:35 temp:25]} {72816757 1767529896420 map[co_value:35 temp:25]} {72816757 1767529896758 map[co_value:35 temp:25]} {72816757 1767529897078 map[co_value:35 temp:25]} {72816757 1767529897403 map[co_value:35 temp:25]} {72816757 1767529897735 map[co_value:35 temp:25]}]
+2026-01-04T20:32:14.923+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767529925336 map[co_value:35 temp:25]} {72816757 1767529925691 map[co_value:35 temp:25]} {72816757 1767529926048 map[co_value:35 temp:25]} {72816757 1767529926251 map[co_value:35 temp:25]} {72816757 1767529926471 map[co_value:35 temp:25]}]
+2026-01-04T20:32:55.427+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:32:57.067+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:32:57.068+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:32:57.068+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:33:01.597+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:33:03.948+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:33:03.949+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:33:03.949+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:33:32.569+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767530002486 map[co_value:35 temp:25]} {72816757 1767530002881 map[co_value:35 temp:25]} {72816757 1767530003205 map[co_value:35 temp:25]} {72816757 1767530003790 map[co_value:35 temp:25]} {72816757 1767530004171 map[co_value:35 temp:25]} {72816757 1767530004489 map[co_value:35 temp:25]} {72816757 1767530004823 map[co_value:35 temp:25]}]
+2026-01-04T20:34:01.089+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:34:02.387+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:34:02.393+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:34:02.393+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:34:10.660+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:34:12.974+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:34:12.974+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:34:12.974+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:34:39.139+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767530069026 map[co_value:35 temp:25]} {72816757 1767530069216 map[co_value:35 temp:25]} {72816757 1767530069419 map[co_value:35 temp:25]} {72816757 1767530069896 map[co_value:35 temp:25]} {72816757 1767530070125 map[co_value:35 temp:25]} {72816757 1767530070525 map[co_value:35 temp:25]} {72816757 1767530070747 map[co_value:35 temp:25]} {72816757 1767530071086 map[co_value:35 temp:25]}]
+2026-01-04T20:35:29.138+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767530125303 map[co_value:35 temp:25]} {72816757 1767530125629 map[co_value:35 temp:25]} {72816757 1767530125974 map[co_value:35 temp:25]} {72816757 1767530126303 map[co_value:35 temp:25]} {72816757 1767530126638 map[co_value:35 temp:25]} {72816757 1767530126978 map[co_value:35 temp:25]} {72816757 1767530127324 map[co_value:35 temp:25]} {72816757 1767530127671 map[co_value:35 temp:25]} {72816757 1767530127999 map[co_value:35 temp:25]} {72816757 1767530128323 map[co_value:35 temp:25]} {72816757 1767530128672 map[co_value:35 temp:25]}]
+2026-01-04T20:36:20.098+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:36:21.483+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:36:21.484+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:36:21.484+0800 [34mINFO[0m server/server.go:372 Server stopped
+2026-01-04T20:36:26.018+0800 [34mINFO[0m executors/dataBatch.go:42 batch report dataBatchSize :100 dataBatchInterval:10
+2026-01-04T20:36:28.310+0800 [34mINFO[0m mqttclient/client.go:46 Connected
+2026-01-04T20:36:28.310+0800 [34mINFO[0m server/server.go:360 Server starting ( [::]:41372 )
+2026-01-04T20:36:28.310+0800 [34mINFO[0m server/server.go:361 Server start success.
+2026-01-04T20:36:50.518+0800 [34mINFO[0m executors/dataBatch.go:53 batch insert data:[{72816757 1767530200447 map[co_value:35 temp:25]}]
+2026-01-04T20:44:06.547+0800 [34mINFO[0m service/service.go:501 got stop signal, exit...
+2026-01-04T20:44:07.978+0800 [34mINFO[0m server/server.go:354 Server shutting down
+2026-01-04T20:44:07.981+0800 [34mINFO[0m server/server.go:357 Server shut down
+2026-01-04T20:44:07.981+0800 [34mINFO[0m server/server.go:372 Server stopped

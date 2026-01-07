@@ -25,8 +25,8 @@ import (
 	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/deviceonline"
 	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
-
 	"github.com/winc-link/hummingbird-sdk-go/model"
+	"math/rand/v2"
 	"net"
 	"strings"
 )
@@ -100,12 +100,17 @@ func OnUnsubscribe(ctx context.Context, client server.Client, req *server.Unsubs
 // 统计订阅报文数
 func OnUnsubscribed(ctx context.Context, client server.Client, topicName string) {}
 
+func Rand30To40() int {
+	return rand.IntN(11) + 30 // 0~10 再 +90 → 90~100
+}
+
 // OnMsgArrived 收到消息发布报文时调用
 // 校验发布权限，改写发布消息
 func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArrivedRequest) error {
 	if client.ClientOptions().ClientID == constants.MQTTInnerClientId {
 		return nil
 	}
+	fmt.Println("req.Publish.TopicName:", req.Publish.TopicName)
 	topic := dtos.Topic(req.Publish.TopicName)
 	deviceId := topic.GetThingModelTopicDeviceId()
 	device, ok := GlobalDriverService.GetDeviceById(deviceId)

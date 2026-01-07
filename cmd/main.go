@@ -21,7 +21,7 @@ import (
 )
 
 func main() {
-	driverService := service.NewDriverService("official-mqtt-driver-v2.7")
+	driverService := service.NewDriverService("official-mqtt-driver-v3.0")
 	config.InitConfig(driverService)
 	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
 	if err := driverService.Start(mqttDriver); err != nil {

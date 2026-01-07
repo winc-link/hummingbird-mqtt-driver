@@ -16,8 +16,10 @@ package driver
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/spf13/cast"
 	"github.com/winc-link/hummingbird-mqtt-driver/config"
 	constants "github.com/winc-link/hummingbird-mqtt-driver/constant"
 	"github.com/winc-link/hummingbird-mqtt-driver/dtos"
@@ -37,6 +39,7 @@ type MQTTProtocolDriver struct {
 
 // DeviceNotify 设备添加/修改/删除通知
 func (dr MQTTProtocolDriver) DeviceNotify(ctx context.Context, t commons.DeviceNotifyType, deviceId string, device model.Device) error {
+	dr.sd.GetLogger().Infof("device notify %s %v", deviceId, device)
 	switch t {
 	case commons.DeviceAddNotify:
 		deviceonline.AddDeviceStatusTimeController(device)
@@ -48,6 +51,7 @@ func (dr MQTTProtocolDriver) DeviceNotify(ctx context.Context, t commons.DeviceN
 
 // ProductNotify 产品添加/修改/删除通知
 func (dr MQTTProtocolDriver) ProductNotify(ctx context.Context, t commons.ProductNotifyType, productId string, product model.Product) error {
+	dr.sd.GetLogger().Infof("product notify %s %v", productId, product)
 	return nil
 }
 
@@ -173,6 +177,29 @@ func (dr MQTTProtocolDriver) HandleServiceExecute(ctx context.Context, deviceId 
 		topic = fmt.Sprintf(constants.TopicSubDeviceServiceInvoke, deviceId)
 	}
 	dr.mqttClient.Publish(topic, 1, false, propertySet.Marshal())
+	return nil
+}
+
+func (dr MQTTProtocolDriver) HandlePropertyReportDebug(ctx context.Context, deviceId string, data model.PropertyReport) error {
+	data.Time = time.Now().UnixMilli()
+	newData := make(map[string]interface{})
+	for k, v := range data.Data {
+		newData[k] = cast.ToFloat64(v)
+	}
+	data.Data = newData
+	resp, _ := dr.sd.PropertyReport(deviceId, data)
+	if resp.Success != true {
+		return errors.New(resp.ErrorMessage)
+	}
+	return nil
+}
+
+func (dr MQTTProtocolDriver) HandleEventReportDebug(ctx context.Context, deviceId string, data model.EventReport) error {
+	data.Time = time.Now().UnixMilli()
+	resp, _ := dr.sd.EventReport(deviceId, data)
+	if resp.Success != true {
+		return errors.New(resp.ErrorMessage)
+	}
 	return nil
 }
 
