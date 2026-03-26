@@ -8,7 +8,8 @@ require (
 	github.com/DrmagicE/gmqtt v0.5.0
 	github.com/eclipse/paho.mqtt.golang v1.4.3
 	github.com/spf13/cast v1.10.0
-	github.com/winc-link/hummingbird-sdk-go v0.0.0-20260325080004-9b7f029d63a9
+	github.com/winc-link/hummingbird-sdk-go v0.0.0-20260326062100-4b4b45859952
+	gorm.io/gorm v1.25.12
 )
 
 require (
@@ -59,7 +60,7 @@ require (
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/taosdata/driver-go/v3 v3.7.0 // indirect
-	github.com/winc-link/edge-driver-proto v0.0.0-20260105125644-359a08331149 // indirect
+	github.com/winc-link/edge-driver-proto v0.0.0-20260326055853-d7c62f9d955d // indirect
 	github.com/zeromicro/go-zero v1.9.3 // indirect
 	go.opentelemetry.io/otel v1.35.0 // indirect
 	go.opentelemetry.io/otel/trace v1.35.0 // indirect
@@ -79,5 +80,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/mysql v1.5.7 // indirect
 	gorm.io/driver/sqlite v1.5.7 // indirect
-	gorm.io/gorm v1.25.12 // indirect
 )

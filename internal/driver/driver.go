@@ -203,6 +203,10 @@ func (dr MQTTProtocolDriver) HandleEventReportDebug(ctx context.Context, deviceI
 	return nil
 }
 
+func (dr MQTTProtocolDriver) GatewayControlSet(ctx context.Context, deviceId string, data model.GatewayControlSet) error {
+	return nil
+}
+
 // NewMQTTProtocolDriver MQTT协议驱动
 func NewMQTTProtocolDriver(sd *service.DriverService) *MQTTProtocolDriver {
 	cfg := config.GetConfig()
