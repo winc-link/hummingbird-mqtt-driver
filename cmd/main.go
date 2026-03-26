@@ -17,11 +17,38 @@ package main
 import (
 	"github.com/winc-link/hummingbird-mqtt-driver/config"
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/driver"
+	"github.com/winc-link/hummingbird-sdk-go/constants"
+	"github.com/winc-link/hummingbird-sdk-go/datadb/influxdb"
 	"github.com/winc-link/hummingbird-sdk-go/service"
 )
 
 func main() {
-	driverService := service.NewDriverService("official-mqtt-driver-v3.0")
+	//driverService := service.NewDriverService("official-mqtt-driver-v3.1")
+
+	driverService := service.NewDriverService("test",
+		service.WithCustomRedisBasesConfig(&service.RedisBasesConnConfig{
+			Address:  "*.*.:6379",
+			Password: "",
+			DB:       0,
+		}),
+		service.WithCustomDataBasesConfig(&service.DataBasesConnConfig{
+			Type: constants.DataBasesInfluxdb,
+			InfluxDB: influxdb.DbClient{
+				Org:       "hummingbird",
+				Bucket:    "device-data",
+				LogBucket: "device-log",
+				Url:       "http://*.221.36.14:8086",
+				Token:     "6S4LFh_kP0-RHqIYjYlXgvGfXOgMIkqMkinZDePKiXbcmgIQzQcm5mV5GfSQEDVqcKzQ5WIixO7AEmwHQ17JmQ==",
+			},
+
+			//Type: constants.DataBasesTdengine,
+			//Tdengine: tdengine.DbClient{
+			//	Dsn: "root:taosdata@ws(127.0.0.1:6041)/devicedata",
+			//},
+		}), service.WithCustomMetaBasesConfig(&service.MetaBasesConnConfig{
+			Type: constants.MetadataMysql,
+			Dns:  "root:!@#12345678.@tcp(*.221.36.14:3306)/hummingbird?charset=utf8mb4&parseTime=True&loc=Local&timeout=2s",
+		}))
 	config.InitConfig(driverService)
 	mqttDriver := driver.NewMQTTProtocolDriver(driverService)
 	if err := driverService.Start(mqttDriver); err != nil {
