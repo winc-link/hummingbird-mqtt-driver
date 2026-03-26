@@ -18,6 +18,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math/rand/v2"
+	"net"
+	"strings"
+	"time"
+
 	"github.com/DrmagicE/gmqtt"
 	"github.com/DrmagicE/gmqtt/pkg/packets"
 	"github.com/DrmagicE/gmqtt/server"
@@ -26,9 +31,7 @@ import (
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/deviceonline"
 	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
 	"github.com/winc-link/hummingbird-sdk-go/model"
-	"math/rand/v2"
-	"net"
-	"strings"
+	"gorm.io/gorm"
 )
 
 // OnAccept TCP连接建立时调用
@@ -112,6 +115,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 	}
 	fmt.Println("req.Publish.TopicName:", req.Publish.TopicName)
 	topic := dtos.Topic(req.Publish.TopicName)
+	fmt.Println("[topic]", topic)
 	deviceId := topic.GetThingModelTopicDeviceId()
 	device, ok := GlobalDriverService.GetDeviceById(deviceId)
 	if !ok {
@@ -125,6 +129,8 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 	if device.ProductId != product.Id {
 		return fmt.Errorf("unauthorized")
 	}
+
+	fmt.Println("authorized")
 	if strings.Contains(string(topic), "thing/property/post") {
 		payload := req.Message.Payload
 		var reportMessage model.PropertyReport
@@ -288,6 +294,76 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		err = GlobalDriverService.ServiceExecuteResponse(deviceId, executeResponse)
 		if err != nil {
 			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
+		}
+	} else if strings.Contains(string(topic), "gateway") {
+		payload := req.Message.Payload
+		var reportMessage dtos.GatewayReportData
+		err := json.Unmarshal(payload, &reportMessage)
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("gateway  device [%s] report event failed! error:%v", deviceId, err.Error())
+			return err
+		}
+		// 第一步，将payload存入redis key=>gateway-{gatewaySn}  value 是 对象
+		redisClient := GlobalDriverService.GetRedisClient()
+
+		// todo redisClient 存入逻辑
+		rediskey := "gateway-" + reportMessage.Params.GatewaySn
+
+		err = redisClient.GetClient().HSet(context.TODO(),
+			rediskey, reportMessage.Params.TransFormRedis()).Err()
+
+		dbdata := reportMessage.Params.TransFormOrm()
+
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("redis %s write failed %s", rediskey, err.Error())
+		}
+
+		//第二步，将payload存入mysql
+		dbClient := GlobalDriverService.GetDBClient()
+
+		err = dbClient.Transaction(func(tx *gorm.DB) error {
+
+			err := tx.Table("gateway_info").Where("gateway_sn =  ? ",
+				reportMessage.Params.GatewaySn).Updates(dbdata).Error
+
+			if err != nil {
+				return err
+			}
+
+			// err = tx.Table("device").Where("id = ?",
+			// 	reportMessage.Data.Id).Updates(map[string]any{
+			// 	"name": reportMessage.Data.Name,
+			// }).Error
+
+			return nil
+		})
+
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("db write data  failed  %s", err.Error())
+
+		}
+
+		datadbtimestamp := reportMessage.Timestamp
+
+		if datadbtimestamp == 0 {
+			datadbtimestamp = time.Now().UnixMilli()
+		}
+
+		//第三步
+		dataDBClient := GlobalDriverService.GetDataDBClient()
+		err = dataDBClient.InsertDeviceProperties(context.TODO(), model.BatchInsertPropertyData{
+			DeviceID: reportMessage.Params.GatewaySn,
+			T:        time.Now().UnixMilli(),
+			Data: map[string]any{
+				"memory_usage": reportMessage.Params.Monitor.MemoryUsage,
+				"disk_usage":   reportMessage.Params.Monitor.DiskUsage,
+				"cpu_usage":    reportMessage.Params.Monitor.CpuUsage,
+			},
+		})
+
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("datadb  write point  failed  %s", err.Error())
+
 		}
 	}
 	return nil
