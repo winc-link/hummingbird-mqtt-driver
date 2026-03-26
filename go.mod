@@ -8,7 +8,7 @@ require (
 	github.com/DrmagicE/gmqtt v0.5.0
 	github.com/eclipse/paho.mqtt.golang v1.4.3
 	github.com/spf13/cast v1.10.0
-	github.com/winc-link/hummingbird-sdk-go v0.0.0-20260107025533-e86fc28665ec
+	github.com/winc-link/hummingbird-sdk-go v0.0.0-20260325080004-9b7f029d63a9
 )
 
 require (

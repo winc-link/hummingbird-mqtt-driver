@@ -768,8 +768,8 @@ github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1
 github.com/ugorji/go v1.1.4/go.mod h1:uQMGLiO92mf5W77hV/PUCpI3pbzQx3CRekS0kk+RGrc=
 github.com/winc-link/edge-driver-proto v0.0.0-20260105125644-359a08331149 h1:R/Nq+Z+Me/8bcoa/H/pMJ4jgQjNU4xMA9XxeXta6xCM=
 github.com/winc-link/edge-driver-proto v0.0.0-20260105125644-359a08331149/go.mod h1:H6w+UUMgmrTB+A/vJLm+kwtLb1dcA02IV9wj1UtO3Ws=
-github.com/winc-link/hummingbird-sdk-go v0.0.0-20260107025533-e86fc28665ec h1:1rp/1lEVXMlYbyNGCgyUPUXEYAe/A7bVgNcF+lARKQc=
-github.com/winc-link/hummingbird-sdk-go v0.0.0-20260107025533-e86fc28665ec/go.mod h1:f/++YrMcOjzw8erjRPZ6Vjd87q3Pzdv1DI54Y9pBsuQ=
+github.com/winc-link/hummingbird-sdk-go v0.0.0-20260325080004-9b7f029d63a9 h1:oK/4742LJqReJFhYx+PaRIVo5hMk6omXXO6eChI8JIY=
+github.com/winc-link/hummingbird-sdk-go v0.0.0-20260325080004-9b7f029d63a9/go.mod h1:f/++YrMcOjzw8erjRPZ6Vjd87q3Pzdv1DI54Y9pBsuQ=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=
 github.com/xdg-go/scram v1.1.1/go.mod h1:RaEWvsqvNKKvBPvcKeFjrG2cJqOkHTiyTpzz23ni57g=
 github.com/xdg-go/stringprep v1.0.3/go.mod h1:W3f5j4i+9rC0kuIEJL0ky1VpHXQU3ocBgklLGvcBnW8=
