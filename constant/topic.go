@@ -69,4 +69,8 @@ const (
 	TopicSubDeviceServiceInvokeReply = TopicPrefix + "+/+/thing/sub/service/invoke_reply" //设备->平台 设备服务调用响应
 	TopicSubDeviceServiceInvoke      = TopicPrefix + "%s/thing/sub/service/invoke"        //平台->设备 设备服务调用
 
+	// 网关设备设置
+	GatewayStatusPostTopic        = "wclink/gateway/%s/status/post"
+	TopicGatewayControlSetTopic   = "wclink/gateway/%s/control/set"
+	TopicGatewayControlReplyTopic = "wclink/gateway/%s/control/reply"
 )

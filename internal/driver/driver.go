@@ -204,6 +204,10 @@ func (dr MQTTProtocolDriver) HandleEventReportDebug(ctx context.Context, deviceI
 }
 
 func (dr MQTTProtocolDriver) GatewayControlSet(ctx context.Context, deviceId string, data model.GatewayControlSet) error {
+	token := dr.mqttClient.Publish(fmt.Sprintf(constants.TopicGatewayControlSetTopic, deviceId), 1, false, data)
+	if token.Wait() && token.Error() != nil {
+		dr.sd.GetLogger().Errorf("gateway control set error: %s", token.Error())
+	}
 	return nil
 }
 

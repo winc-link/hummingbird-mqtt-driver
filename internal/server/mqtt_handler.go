@@ -31,7 +31,6 @@ import (
 	"github.com/winc-link/hummingbird-mqtt-driver/internal/deviceonline"
 	"github.com/winc-link/hummingbird-mqtt-driver/mqttclient"
 	"github.com/winc-link/hummingbird-sdk-go/model"
-	"gorm.io/gorm"
 )
 
 // OnAccept TCP连接建立时调用
@@ -295,7 +294,7 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		if err != nil {
 			GlobalDriverService.GetLogger().Errorf("sub device [%s] get property failed! error:%v", deviceId, err.Error())
 		}
-	} else if strings.Contains(string(topic), "gateway") {
+	} else if strings.Contains(string(topic), "status/post") {
 		payload := req.Message.Payload
 		var reportMessage dtos.GatewayReportData
 		err := json.Unmarshal(payload, &reportMessage)
@@ -306,49 +305,32 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 		// 第一步，将payload存入redis key=>gateway-{gatewaySn}  value 是 对象
 		redisClient := GlobalDriverService.GetRedisClient()
 
-		// todo redisClient 存入逻辑
-		rediskey := "gateway-" + reportMessage.Params.GatewaySn
+		redisKey := "gateway-" + reportMessage.Params.GatewaySn
 
 		err = redisClient.GetClient().HSet(context.TODO(),
-			rediskey, reportMessage.Params.TransFormRedis()).Err()
-
-		dbdata := reportMessage.Params.TransFormOrm()
+			redisKey, reportMessage.Params.TransFormRedis()).Err()
+		if err != nil {
+			GlobalDriverService.GetLogger().Errorf("gateway  device [%s] report event failed! error:%v", deviceId, err.Error())
+		}
+		dbData := reportMessage.Params.TransFormOrm()
 
 		if err != nil {
-			GlobalDriverService.GetLogger().Errorf("redis %s write failed %s", rediskey, err.Error())
+			GlobalDriverService.GetLogger().Errorf("redis %s write failed %s", redisKey, err.Error())
 		}
 
 		//第二步，将payload存入mysql
 		dbClient := GlobalDriverService.GetDBClient()
 
-		err = dbClient.Transaction(func(tx *gorm.DB) error {
-
-			err := tx.Table("gateway_info").Where("gateway_sn =  ? ",
-				reportMessage.Params.GatewaySn).Updates(dbdata).Error
-
-			if err != nil {
-				return err
-			}
-
-			// err = tx.Table("device").Where("id = ?",
-			// 	reportMessage.Data.Id).Updates(map[string]any{
-			// 	"name": reportMessage.Data.Name,
-			// }).Error
-
-			return nil
-		})
+		err = dbClient.Table("gateway_info").Where("gateway_sn =  ? ",
+			reportMessage.Params.GatewaySn).Updates(dbData).Error
 
 		if err != nil {
-			GlobalDriverService.GetLogger().Errorf("db write data  failed  %s", err.Error())
-
+			GlobalDriverService.GetLogger().Errorf("mysql %s write failed %s", redisKey, err.Error())
 		}
-
-		datadbtimestamp := reportMessage.Timestamp
-
-		if datadbtimestamp == 0 {
-			datadbtimestamp = time.Now().UnixMilli()
+		timestamp := reportMessage.Timestamp
+		if timestamp == 0 {
+			timestamp = time.Now().UnixMilli()
 		}
-
 		//第三步
 		dataDBClient := GlobalDriverService.GetDataDBClient()
 		err = dataDBClient.InsertDeviceProperties(context.TODO(), model.BatchInsertPropertyData{
@@ -365,6 +347,11 @@ func OnMsgArrived(ctx context.Context, client server.Client, req *server.MsgArri
 			GlobalDriverService.GetLogger().Errorf("datadb  write point  failed  %s", err.Error())
 
 		}
+	} else if strings.Contains(string(topic), "control/reply") {
+		//拿到回复消息
+		payload := req.Message.Payload
+		GlobalDriverService.GetLogger().Infof("gateway  device [%s] reply %s", deviceId, string(payload))
+		
 	}
 	return nil
 }
